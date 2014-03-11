@@ -26,8 +26,6 @@
         AVMutableCompositionTrack *compositionVideoTrack;
         compositionVideoTrack = [_mixComposition addMutableTrackWithMediaType:AVMediaTypeVideo
                                                              preferredTrackID:kCMPersistentTrackID_Invalid];
-        
-        NSLog(@"init [_mixComposition duration] = %f", CMTimeGetSeconds([_mixComposition duration]));
 
         // AVMutableVideoComposition
         _videoComposition = [AVMutableVideoComposition videoComposition];
@@ -80,12 +78,6 @@
                                     atTime:_currentTimeDuration
                                      error:nil];
     [compositionVideoTrack setPreferredTransform:[[[videoAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0] preferredTransform]];
-    
-    
-    NSLog(@"add [currentTimeDuration] = %f",      CMTimeGetSeconds(_currentTimeDuration));
-    NSLog(@"add [videoAsset duration] = %f",      CMTimeGetSeconds([videoAsset duration]));
-    NSLog(@"add [_mixComposition duration] = %f", CMTimeGetSeconds([_mixComposition duration]));
-    
 
     AVMutableCompositionTrack *compositionAudioTrack = [_mixComposition addMutableTrackWithMediaType:AVMediaTypeAudio
                                                                                    preferredTrackID:kCMPersistentTrackID_Invalid];
@@ -121,8 +113,6 @@
     [_videoComposition setInstructions: [NSArray arrayWithObject: _instruction]];
     [_instruction setLayerInstructions: [[_layerInstructions reverseObjectEnumerator] allObjects]];
     
-    NSLog(@"[_mixComposition duration] = %f", CMTimeGetSeconds([_mixComposition duration]));
-
     // generate AVAssetExportSession based on the composition
     _assetExportSession = [[AVAssetExportSession alloc] initWithAsset:_mixComposition presetName:AVAssetExportPreset1280x720];
     [_assetExportSession setVideoComposition: _videoComposition];
