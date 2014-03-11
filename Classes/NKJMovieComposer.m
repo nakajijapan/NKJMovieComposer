@@ -40,7 +40,7 @@
 }
 
 #pragma mark - Cover Video
-- (void)coverVideoWithURL:(NSURL*)movieURL scale:(CGAffineTransform)scale trnsration:(CGAffineTransform)trnsration
+- (void)coverVideoWithURL:(NSURL*)movieURL scale:(CGAffineTransform)scale transration:(CGAffineTransform)transration
 {
     AVURLAsset *videoAsset = [[AVURLAsset alloc] initWithURL:movieURL options:nil];
     AVMutableCompositionTrack *compositionVideoTrack;
@@ -58,7 +58,7 @@
     layerInstruction = [AVMutableVideoCompositionLayerInstruction
                          videoCompositionLayerInstructionWithAssetTrack:compositionVideoTrack];
     
-    [layerInstruction setTransform:CGAffineTransformConcat(scale, trnsration) atTime:kCMTimeZero];
+    [layerInstruction setTransform:CGAffineTransformConcat(scale, transration) atTime:kCMTimeZero];
     
     // Hide
     [layerInstruction setOpacity:0 atTime:_currentTimeDuration];

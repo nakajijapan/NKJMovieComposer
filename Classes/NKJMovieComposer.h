@@ -18,7 +18,7 @@
 @property (nonatomic, readonly) NSMutableArray                     *layerInstructions;
 
 - (AVMutableVideoCompositionLayerInstruction *)addVideoWithURL:(NSURL *)movieURL;
-- (void)coverVideoWithURL:(NSURL *)movieURL scale:(CGAffineTransform)scale trnsration:(CGAffineTransform)trnsration;
+- (void)coverVideoWithURL:(NSURL *)movieURL scale:(CGAffineTransform)scale transration:(CGAffineTransform)transration;
 - (AVAssetExportSession *)readyToComposeVideoWithFilePath:(NSString *)composedMoviePath;
 
 @end
