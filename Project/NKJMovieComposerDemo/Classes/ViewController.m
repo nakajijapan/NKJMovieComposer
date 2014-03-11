@@ -107,7 +107,7 @@
     NSURL* movieURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"movie_wipe001" ofType:@"mov"]];
     [movieComposition coverVideoWithURL:movieURL
                                   scale:CGAffineTransformMakeScale(0.30f, 0.30f)
-                            transration:CGAffineTransformMakeTranslation(426, 30)];
+                              transform:CGAffineTransformMakeTranslation(426, 30)];
     
     // movie2
     NSURL* movieURL2 = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"movie002" ofType:@"mov"]];
