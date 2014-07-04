@@ -1,7 +1,0 @@
-pod "NKJMovieComposer", :path => "../NKJMovieComposer.podspec"
-
-target "Demo" do
-end
-
-target "DemoTests" do
-end
