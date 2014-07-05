@@ -43,13 +43,13 @@ class ViewController: UIViewController, UIAlertViewDelegate {
 
     // reflect the progress status to the view
     func updateExportDisplay(sender: AnyObject!) {
-        self.loadingView.progressView.progress = assetExportSession.progress
+        self.loadingView.progressView.progress = self.assetExportSession.progress
 
         // TEST
         println("update progress : ")
-        println(assetExportSession.progress)
+        println(self.assetExportSession.progress)
         
-        if assetExportSession.progress > 0.99 {
+        if self.assetExportSession.progress > 0.99 {
             composingTimer.invalidate()
         }
 
@@ -150,11 +150,11 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         )
         
         // compose
-        assetExportSession = movieComposition.readyToComposeVideo(composedMoviePath)
+        self.assetExportSession = movieComposition.readyToComposeVideo(composedMoviePath)
         let composedMovieUrl = NSURL.fileURLWithPath(composedMoviePath)
 
         // export
-        assetExportSession.exportAsynchronouslyWithCompletionHandler({() -> Void in
+        self.assetExportSession.exportAsynchronouslyWithCompletionHandler({() -> Void in
             if self.assetExportSession.status == AVAssetExportSessionStatus.Completed {
                 println("export session completed")
             }
@@ -196,8 +196,8 @@ class ViewController: UIViewController, UIAlertViewDelegate {
 
         })
         
-        if assetExportSession.error {
-            println("assetExportSession: \(assetExportSession.error)")
+        if self.assetExportSession.error {
+            println("assetExportSession: \(self.assetExportSession.error)")
         }
         
     }
