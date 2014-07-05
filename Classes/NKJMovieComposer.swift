@@ -52,7 +52,7 @@ class NKJMovieComposer: NSObject {
             error: nil
         )
         
-        compositionAudioTrack = self.mixComposition.addMutableTrackWithMediaType(AVMediaTypeVideo, preferredTrackID: 0)
+        compositionAudioTrack = self.mixComposition.addMutableTrackWithMediaType(AVMediaTypeAudio, preferredTrackID: 0)
         compositionAudioTrack.insertTimeRange(
             CMTimeRange(start: kCMTimeZero, duration: videoAsset.duration),
             ofTrack: videoAsset.tracksWithMediaType(AVMediaTypeAudio)[0] as AVAssetTrack,
