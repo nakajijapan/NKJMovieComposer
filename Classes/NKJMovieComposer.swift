@@ -24,8 +24,6 @@ class NKJMovieComposer: NSObject {
         
         // AVMutableComposition
         self.mixComposition = AVMutableComposition()
-        var compositionVideoTrack: AVMutableCompositionTrack!
-        compositionVideoTrack = self.mixComposition.addMutableTrackWithMediaType(AVMediaTypeVideo, preferredTrackID: CMPersistentTrackID(kCMPersistentTrackID_Invalid))
         
         // AVMutableVideoComposition
         self.videoComposition = AVMutableVideoComposition()
