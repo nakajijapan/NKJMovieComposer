@@ -65,7 +65,7 @@ class NKJMovieComposer: NSObject {
         var layerInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: compositionVideoTrack)
         
         // Hide
-        layerInstruction.setOpacity(0, atTime: self.currentTimeDuration)
+        layerInstruction.setOpacity(0.0, atTime: self.currentTimeDuration)
         self.layerInstructions.addObject(layerInstruction)
         
         return layerInstruction
@@ -93,7 +93,7 @@ class NKJMovieComposer: NSObject {
         layerInstruction.setTransform(CGAffineTransformConcat(scale, transform), atTime: kCMTimeZero)
         
         // Hide
-        layerInstruction.setOpacity(0, atTime: self.currentTimeDuration)
+        layerInstruction.setOpacity(0.0, atTime: self.currentTimeDuration)
         self.layerInstructions.addObject(layerInstruction)
         
         return layerInstruction
