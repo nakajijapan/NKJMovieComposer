@@ -159,7 +159,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
                 println("export session completed")
             }
             else {
-                println("export session completed")
+                println("export session error")
             }
             
             // save to device
