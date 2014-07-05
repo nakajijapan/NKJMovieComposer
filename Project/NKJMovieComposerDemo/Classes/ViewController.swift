@@ -50,7 +50,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         println(self.assetExportSession.progress)
         
         if self.assetExportSession.progress > 0.99 {
-            composingTimer.invalidate()
+            self.composingTimer.invalidate()
         }
 
     }
