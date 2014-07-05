@@ -40,7 +40,7 @@ class NKJMovieComposer: NSObject {
         var videoAsset = AVURLAsset(URL:movieURL, options:nil)
         var compositionVideoTrack: AVMutableCompositionTrack!
         var compositionAudioTrack: AVMutableCompositionTrack!
-        var videoTrack:AVAssetTrack! = videoAsset.tracksWithMediaType(AVMediaTypeVideo)[0] as AVAssetTrack
+        var videoTrack = videoAsset.tracksWithMediaType(AVMediaTypeVideo)[0] as AVAssetTrack
         
         compositionVideoTrack = self.mixComposition.addMutableTrackWithMediaType(AVMediaTypeVideo, preferredTrackID: 0)
         compositionVideoTrack.insertTimeRange(
@@ -49,6 +49,7 @@ class NKJMovieComposer: NSObject {
             atTime: self.currentTimeDuration,
             error: nil
         )
+        compositionVideoTrack.preferredTransform = videoTrack.preferredTransform
         
         compositionAudioTrack = self.mixComposition.addMutableTrackWithMediaType(AVMediaTypeAudio, preferredTrackID: 0)
         compositionAudioTrack.insertTimeRange(
