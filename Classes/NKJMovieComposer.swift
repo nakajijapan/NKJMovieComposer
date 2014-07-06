@@ -10,12 +10,12 @@ import AVFoundation
 import CoreMedia
 
 class NKJMovieComposer: NSObject {
-    var mixComposition: AVMutableComposition!
+    var mixComposition: AVMutableComposition
     var instruction: AVMutableVideoCompositionInstruction!
-    var videoComposition: AVMutableVideoComposition!
+    var videoComposition: AVMutableVideoComposition
     var assetExportSession: AVAssetExportSession!
-    var currentTimeDuration: CMTime!
-    var layerInstructions: NSMutableArray!
+    var currentTimeDuration: CMTime = kCMTimeZero
+    var layerInstructions: NSMutableArray
     
     init() {
         
@@ -29,8 +29,7 @@ class NKJMovieComposer: NSObject {
         self.videoComposition = AVMutableVideoComposition()
         self.videoComposition.renderSize = CGSize(width: 640, height: 640)
         self.videoComposition.frameDuration = CMTimeMake(1, 24)
-        
-        self.currentTimeDuration = kCMTimeZero
+
     }
     
     
