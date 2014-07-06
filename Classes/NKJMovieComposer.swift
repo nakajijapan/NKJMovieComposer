@@ -114,6 +114,7 @@ class NKJMovieComposer: NSObject {
         
         // generate AVAssetExportSession based on the composition
         self.assetExportSession = AVAssetExportSession(asset: self.mixComposition, presetName: AVAssetExportPreset1280x720)
+        self.assetExportSession.videoComposition = self.videoComposition
         self.assetExportSession.outputFileType = AVFileTypeQuickTimeMovie
         self.assetExportSession.outputURL = NSURL(fileURLWithPath: composedMoviePath)
         self.assetExportSession.shouldOptimizeForNetworkUse = true
