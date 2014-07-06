@@ -27,11 +27,11 @@ class ConfirmViewController: UIViewController {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.whiteColor()
-        let movieUrl = NSURL(fileURLWithPath: self.appDelegate.composedMoviePath)
         
         self.appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         println("composedMoviePath = \(self.appDelegate.composedMoviePath)")
-        
+        let movieUrl = NSURL(fileURLWithPath: self.appDelegate.composedMoviePath)
+
         movielayer = MPMoviePlayerController(contentURL: movieUrl)
         movielayer.controlStyle = MPMovieControlStyle.Embedded
         movielayer.scalingMode = MPMovieScalingMode.AspectFill
