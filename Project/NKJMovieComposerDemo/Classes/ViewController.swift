@@ -39,6 +39,26 @@ class ViewController: UIViewController, UIAlertViewDelegate {
 
     }
     
+    func pushSave(sender:AnyObject) {
+        println("\(__FUNCTION__)")
+        println(self.view.frame)
+        println(self.view.bounds)
+        
+        self.loadingView = LoadingImageView(frame: CGRect(x: 20, y: 60, width: 280, height: 3), useProgress: true)
+        self.view.addSubview(loadingView)
+        loadingView.start()
+        
+        // continue to proccess for a certain period
+        self.composingTimer = NSTimer.scheduledTimerWithTimeInterval(
+            0.1,
+            target: self,
+            selector: "updateExportDisplay:",
+            userInfo: nil,
+            repeats: false
+        )
+        self.saveComposedVideo()
+    }
+    
     // Timer
 
     // reflect the progress status to the view
@@ -71,26 +91,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     
     // Composite Video
     
-    func pushSave(sender:AnyObject) {
-        println("\(__FUNCTION__)")
-        println(self.view.frame)
-        println(self.view.bounds)
-     
-        self.loadingView = LoadingImageView(frame: CGRect(x: 20, y: 60, width: 280, height: 3), useProgress: true)
-        self.view.addSubview(loadingView)
-        loadingView.start()
-        
-        // continue to proccess for a certain period
-        self.composingTimer = NSTimer.scheduledTimerWithTimeInterval(
-            0.1,
-            target: self,
-            selector: "updateExportDisplay:",
-            userInfo: nil,
-            repeats: false
-        )
-        self.saveComposedVideo()
-    }
-    
+
     func composingVideoToFileURLString(composedMoviePath: String) {
         var movieComposition = NKJMovieComposer()
         var layerInstruction: AVMutableVideoCompositionLayerInstruction
