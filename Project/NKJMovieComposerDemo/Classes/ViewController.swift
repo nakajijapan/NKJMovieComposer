@@ -66,8 +66,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         self.loadingView.progressView.progress = self.assetExportSession.progress
 
         // TEST
-        println("update progress : ")
-        println(self.assetExportSession.progress)
+        println("update progress : \(self.assetExportSession.progress)")
         
         if self.assetExportSession.progress > 0.99 {
             self.composingTimer.invalidate()
