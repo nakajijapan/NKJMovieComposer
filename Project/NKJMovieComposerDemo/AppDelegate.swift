@@ -17,11 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         // Override point for customization after application launch.
-        
-        var viewController = ViewController(nibName: nil, bundle: nil)
-        var navigationController = UINavigationController(rootViewController: viewController)
-        self.window!.rootViewController!.presentViewController(navigationController, animated: false, completion: nil)
-        
         return true
     }
 
