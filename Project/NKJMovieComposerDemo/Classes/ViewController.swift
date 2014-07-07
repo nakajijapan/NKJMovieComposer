@@ -41,7 +41,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     
     func pushSave(sender:AnyObject) {
         
-        self.loadingView = LoadingImageView(frame: CGRect(x: 20, y: 60, width: 280, height: 3), useProgress: true)
+        self.loadingView = LoadingImageView(frame: self.view.frame, useProgress: true)
         self.view.addSubview(loadingView)
         loadingView.start()
         
