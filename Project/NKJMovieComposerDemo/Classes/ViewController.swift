@@ -54,7 +54,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
             target: self,
             selector: "updateExportDisplay:",
             userInfo: nil,
-            repeats: false
+            repeats: true
         )
         self.saveComposedVideo()
     }
