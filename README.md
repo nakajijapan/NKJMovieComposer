@@ -21,39 +21,51 @@ pod "NKJMovieComposer"
 
 #### 1.Initialize
 
-```obj-c
-    NKJMovieComposer* movieComposition = [[NKJMovieComposer alloc] init];
+```swift
+    let movieComposition = NKJMovieComposer()
 ```
 
 #### 2.Simple Example
 
-```obj-c
-    NSURL* movieURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"movie_file" ofType:@"mov"]];
-    [movieComposition addVideoWithURL:movieURL];
+Append Movies.
+
+```swift
+        // movie
+        let movieURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("movie001", ofType: "mov"))
+        layerInstruction = movieComposition.addVideo(movieURL)
 ```
+
 
 #### 3.Save File
 
-```obj-c
-    // compose
-    assetExportSession = [movieComposition readyToComposeVideoWithFilePath:composedMoviePath];
-    NSURL *composedMovieUrl = [NSURL fileURLWithPath:composedMoviePath];
 
-    // export
-    [assetExportSession exportAsynchronouslyWithCompletionHandler: ^(void ) {
+```swift
 
-        // save to device
-        ALAssetsLibrary* library = [[ALAssetsLibrary alloc] init];
-        if ([library videoAtPathIsCompatibleWithSavedPhotosAlbum:composedMovieUrl]) {
-            [library writeVideoAtPathToSavedPhotosAlbum:composedMovieUrl
-                                        completionBlock:^(NSURL *assetURL, NSError *assetError) {
+        // compose
+        self.assetExportSession = movieComposition.readyToComposeVideo(composedMoviePath)
+        let composedMovieUrl = NSURL.fileURLWithPath(composedMoviePath)
 
-                                            // something code
+        // export
+        self.assetExportSession.exportAsynchronouslyWithCompletionHandler({() -> Void in
 
-                                        }];
-        }
 
-    }];
+            // save to device
+            var library = ALAssetsLibrary()
+            
+            if library.videoAtPathIsCompatibleWithSavedPhotosAlbum(composedMovieUrl) {
+                library.writeVideoAtPathToSavedPhotosAlbum(composedMovieUrl, completionBlock: {(assetURL, assetError) -> Void in
+
+                    
+                     // something code
+                    
+                    
+                })
+
+             }
+
+
+        })
+
 ```
 
 ## Author
@@ -63,4 +75,5 @@ nakajijapan
 ## License
 
 NKJMovieComposer is available under the MIT license. See the LICENSE file for more info.
+
 
