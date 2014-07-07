@@ -40,9 +40,6 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     }
     
     func pushSave(sender:AnyObject) {
-        println("\(__FUNCTION__)")
-        println(self.view.frame)
-        println(self.view.bounds)
         
         self.loadingView = LoadingImageView(frame: CGRect(x: 20, y: 60, width: 280, height: 3), useProgress: true)
         self.view.addSubview(loadingView)
@@ -57,6 +54,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
             repeats: true
         )
         self.saveComposedVideo()
+
     }
     
     // Timer
@@ -65,9 +63,6 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     func updateExportDisplay(sender: AnyObject!) {
         self.loadingView.progressView.progress = self.assetExportSession.progress
 
-        // TEST
-        println("update progress : \(self.assetExportSession.progress)")
-        
         if self.assetExportSession.progress > 0.99 {
             self.composingTimer.invalidate()
         }
