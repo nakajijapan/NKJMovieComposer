@@ -1,7 +1,10 @@
 # NKJMovieComposer
 
-[![Version](http://cocoapod-badges.herokuapp.com/v/NKJMovieComposer/badge.png)](http://cocoadocs.org/docsets/NKJMovieComposer)
-[![Platform](http://cocoapod-badges.herokuapp.com/p/NKJMovieComposer/badge.png)](http://cocoadocs.org/docsets/NKJMovieComposer)
+[![Version](https://img.shields.io/cocoapods/v/NKJMovieComposer.svg?style=flat)](http://cocoadocs.org/docsets/NKJMovieComposer)
+[![License](https://img.shields.io/cocoapods/l/NKJMovieComposer.svg?style=flat)](http://cocoadocs.org/docsets/NKJMovieComposer)
+[![Platform](https://img.shields.io/cocoapods/p/NKJMovieComposer.svg?style=flat)](http://cocoadocs.org/docsets/NKJMovieComposer)
+
+NKJMovieComposer is very simple movie composer for iOS.
 
 ## Requirements
 
