@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import AVFoundation
 
 class NKJMovieComposerDemoTests: XCTestCase {
     
@@ -20,16 +21,24 @@ class NKJMovieComposerDemoTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+    func testInstanceHasSomeDictionaryForMovies() {
+
+        let movieComposition = NKJMovieComposer()
+        let movieURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("movie001", ofType: "mov")!)
+        movieComposition.addVideo(movieURL)
+        movieComposition.addVideo(movieURL)
+        movieComposition.addVideo(movieURL)
+        XCTAssertEqual(movieComposition.layerInstructions.count, 3, "the count of layer instructions")
+
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
+    func testInstanceReturnsLayerInstruction() {
+        let movieComposition = NKJMovieComposer()
+        let movieURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("movie001", ofType: "mov")!)
+        movieComposition.addVideo(movieURL)
+        
+        let layerInstruction = movieComposition.addVideo(movieURL)
+        XCTAssertEqual(layerInstruction.trackID, 3, "trackID")
     }
     
 }
