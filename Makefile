@@ -19,7 +19,7 @@ build:
 
 test:
 	xctool -arch i386 \
-		-destination "name=iPhone Retina (4-inch),OS=7.0" \
+		-destination "name=iPhone 5s,OS=8.0" \
 		-configuration Debug \
 		-sdk iphonesimulator \
 		-project $(PROJECT) \

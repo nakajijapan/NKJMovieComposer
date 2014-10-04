@@ -17,11 +17,11 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     var composingTimer: NSTimer!
     var assetExportSession: AVAssetExportSession!
     
-    init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
-    init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -87,18 +87,16 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     
 
     func composingVideoToFileURLString(composedMoviePath: String) {
-        var movieComposition = NKJMovieComposer()
+        let movieComposition = NKJMovieComposer()
         var layerInstruction: AVMutableVideoCompositionLayerInstruction
         
         // movie1
-        var movieURL1 = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("movie001", ofType: "mov"))
+        let movieURL1 = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("movie001", ofType: "mov")!)
         layerInstruction = movieComposition.addVideo(movieURL1)
         
         // fade in
-        var startTime: CMTime!
-        var timeDuration: CMTime!
-        startTime = kCMTimeZero
-        timeDuration = CMTimeMake(3, 1)
+        var startTime = kCMTimeZero
+        var timeDuration = CMTimeMake(3, 1)
         layerInstruction.setOpacityRampFromStartOpacity(
             0.0,
             toEndOpacity: 1.0,
@@ -120,18 +118,18 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         )
         */
         
-        let movieURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("movie_wipe001", ofType: "mov"))
+        let movieURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("movie_wipe001", ofType: "mov")!)
         movieComposition.coverVideo(
             movieURL,
             scale: CGAffineTransformMakeScale(0.3, 0.3), transform: CGAffineTransformMakeTranslation(426, 30)
         )
 
         // movie2
-        let movieURL2 = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("movie002", ofType: "mov"))
+        let movieURL2 = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("movie002", ofType: "mov")!)
         movieComposition.addVideo(movieURL2)
         
         // movie3
-        let movieURL3 = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("movie001", ofType: "mov"))
+        let movieURL3 = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("movie001", ofType: "mov")!)
         movieComposition.addVideo(movieURL3)
         
         // fade out
@@ -172,7 +170,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
                         // show success message
                         var alert = UIAlertController(title: "Completion", message: "saved in Photo Album", preferredStyle: UIAlertControllerStyle.Alert)
                         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(alertAction) -> Void in
-                            let vc = ConfirmViewController(coder: nil)
+                            let vc = ConfirmViewController(nibName: nil, bundle: nil)
                             self.navigationController?.pushViewController(vc, animated: true)
                         })
                         alert.addAction(okAction)
@@ -191,7 +189,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
 
         })
         
-        if self.assetExportSession.error {
+        if self.assetExportSession.error != nil {
             println("assetExportSession: \(self.assetExportSession.error)")
         }
         

@@ -9,17 +9,16 @@
 import UIKit
 import MediaPlayer
 
-//class ConfirmViewController: UIViewController, MPMediaPickerControllerDelegate {
 class ConfirmViewController: UIViewController {
     
     var appDelegate:AppDelegate!
     var movielayer: MPMoviePlayerController!
     
-    init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
-    init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     

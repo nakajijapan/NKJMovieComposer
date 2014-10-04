@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC36E40319763F3C00815B59 /* NKJMovieComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB8A6451947C2B00064597C /* NKJMovieComposer.swift */; };
+		DC36E4041976430200815B59 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB8A6431947C1370064597C /* AVFoundation.framework */; };
 		DC456F621947C10D0044304C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC456F611947C10D0044304C /* UIKit.framework */; };
 		DC7925B919658F6F0010FDD6 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC7925B819658F6F0010FDD6 /* AssetsLibrary.framework */; };
 		DC98A01A19624B2600EE80F2 /* movie001.mov in Resources */ = {isa = PBXBuildFile; fileRef = DC98A01519624B2600EE80F2 /* movie001.mov */; };
@@ -28,6 +30,48 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		DC36E3FF19763F1F00815B59 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DCB8A6191947C0AC0064597C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DCB8A6201947C0AC0064597C;
+			remoteInfo = NKJMovieComposerDemo;
+		};
+		DC36E40119763F1F00815B59 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DCB8A6191947C0AC0064597C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DCB8A6201947C0AC0064597C;
+			remoteInfo = NKJMovieComposerDemo;
+		};
+		DC8D80A0196B5D7500BE23A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DCB8A6191947C0AC0064597C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DCB8A6201947C0AC0064597C;
+			remoteInfo = NKJMovieComposerDemo;
+		};
+		DC8D80A2196B5D7500BE23A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DCB8A6191947C0AC0064597C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DCB8A6201947C0AC0064597C;
+			remoteInfo = NKJMovieComposerDemo;
+		};
+		DC8D80A4196B5D7C00BE23A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DCB8A6191947C0AC0064597C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DCB8A6201947C0AC0064597C;
+			remoteInfo = NKJMovieComposerDemo;
+		};
+		DC8D80A6196B5D8000BE23A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DCB8A6191947C0AC0064597C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DCB8A6201947C0AC0064597C;
+			remoteInfo = NKJMovieComposerDemo;
+		};
 		DCB8A6341947C0AC0064597C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DCB8A6191947C0AC0064597C /* Project object */;
@@ -79,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC36E4041976430200815B59 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +254,12 @@
 			);
 			dependencies = (
 				DCB8A6351947C0AC0064597C /* PBXTargetDependency */,
+				DC8D80A1196B5D7500BE23A3 /* PBXTargetDependency */,
+				DC8D80A3196B5D7500BE23A3 /* PBXTargetDependency */,
+				DC8D80A5196B5D7C00BE23A3 /* PBXTargetDependency */,
+				DC8D80A7196B5D8000BE23A3 /* PBXTargetDependency */,
+				DC36E40019763F1F00815B59 /* PBXTargetDependency */,
+				DC36E40219763F1F00815B59 /* PBXTargetDependency */,
 			);
 			name = NKJMovieComposerDemoTests;
 			productName = NKJMovieComposerDemoTests;
@@ -293,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC36E40319763F3C00815B59 /* NKJMovieComposer.swift in Sources */,
 				DCB8A63A1947C0AC0064597C /* NKJMovieComposerDemoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,6 +352,36 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		DC36E40019763F1F00815B59 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DCB8A6201947C0AC0064597C /* NKJMovieComposerDemo */;
+			targetProxy = DC36E3FF19763F1F00815B59 /* PBXContainerItemProxy */;
+		};
+		DC36E40219763F1F00815B59 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DCB8A6201947C0AC0064597C /* NKJMovieComposerDemo */;
+			targetProxy = DC36E40119763F1F00815B59 /* PBXContainerItemProxy */;
+		};
+		DC8D80A1196B5D7500BE23A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DCB8A6201947C0AC0064597C /* NKJMovieComposerDemo */;
+			targetProxy = DC8D80A0196B5D7500BE23A3 /* PBXContainerItemProxy */;
+		};
+		DC8D80A3196B5D7500BE23A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DCB8A6201947C0AC0064597C /* NKJMovieComposerDemo */;
+			targetProxy = DC8D80A2196B5D7500BE23A3 /* PBXContainerItemProxy */;
+		};
+		DC8D80A5196B5D7C00BE23A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DCB8A6201947C0AC0064597C /* NKJMovieComposerDemo */;
+			targetProxy = DC8D80A4196B5D7C00BE23A3 /* PBXContainerItemProxy */;
+		};
+		DC8D80A7196B5D8000BE23A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DCB8A6201947C0AC0064597C /* NKJMovieComposerDemo */;
+			targetProxy = DC8D80A6196B5D8000BE23A3 /* PBXContainerItemProxy */;
+		};
 		DCB8A6351947C0AC0064597C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DCB8A6201947C0AC0064597C /* NKJMovieComposerDemo */;

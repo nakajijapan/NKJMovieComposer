@@ -17,7 +17,7 @@ class NKJMovieComposer: NSObject {
     var currentTimeDuration: CMTime = kCMTimeZero
     var layerInstructions: NSMutableArray
     
-    init() {
+    override init() {
         
         // AVMutableVideoCompositionLayerInstruction's List
         self.layerInstructions = NSMutableArray.array()
@@ -101,7 +101,7 @@ class NKJMovieComposer: NSObject {
     // Export
     func readyToComposeVideo(composedMoviePath: String!) -> AVAssetExportSession! {
         
-        if (!composedMoviePath) {
+        if composedMoviePath == nil {
             return nil
         }
 
