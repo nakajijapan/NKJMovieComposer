@@ -8,7 +8,7 @@ NKJMovieComposer is very simple movie composer for iOS.
 
 ## Requirements
 
-NKJMovieComposer higher requires Xcode 5, targeting either iOS 7.0 and above, or Mac OS 10.9 OS X Mavericks and above.
+NKJMovieComposer higher requires Xcode 6, targeting either iOS 8.0 and above, or Mac OS 10.10 OS X and above.
 
 * AVFoundation.framework
 
