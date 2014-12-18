@@ -38,7 +38,7 @@ class NKJMovieComposerDemoTests: XCTestCase {
         movieComposition.addVideo(movieURL)
         
         let layerInstruction = movieComposition.addVideo(movieURL)
-        XCTAssertEqual(layerInstruction.trackID, 3, "trackID")
+        XCTAssertEqual(layerInstruction.trackID, 3 as CMPersistentTrackID, "trackID")
     }
     
 }
