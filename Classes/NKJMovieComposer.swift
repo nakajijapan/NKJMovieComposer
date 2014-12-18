@@ -20,7 +20,7 @@ class NKJMovieComposer: NSObject {
     override init() {
         
         // AVMutableVideoCompositionLayerInstruction's List
-        self.layerInstructions = NSMutableArray.array()
+        self.layerInstructions = NSMutableArray()
         
         // AVMutableComposition
         self.mixComposition = AVMutableComposition()
