@@ -16,6 +16,12 @@
 		DC98A01C19624B2600EE80F2 /* movie_long001.mov in Resources */ = {isa = PBXBuildFile; fileRef = DC98A01719624B2600EE80F2 /* movie_long001.mov */; };
 		DC98A01D19624B2600EE80F2 /* movie_long002.mov in Resources */ = {isa = PBXBuildFile; fileRef = DC98A01819624B2600EE80F2 /* movie_long002.mov */; };
 		DC98A01E19624B2600EE80F2 /* movie_wipe001.mov in Resources */ = {isa = PBXBuildFile; fileRef = DC98A01919624B2600EE80F2 /* movie_wipe001.mov */; };
+		DCB6378C1A45DC3D00B9AB0D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC456F611947C10D0044304C /* UIKit.framework */; };
+		DCB6378D1A45E46C00B9AB0D /* movie001.mov in Resources */ = {isa = PBXBuildFile; fileRef = DC98A01519624B2600EE80F2 /* movie001.mov */; };
+		DCB6378E1A45E5C400B9AB0D /* movie002.mov in Resources */ = {isa = PBXBuildFile; fileRef = DC98A01619624B2600EE80F2 /* movie002.mov */; };
+		DCB6378F1A45E5C400B9AB0D /* movie_long001.mov in Resources */ = {isa = PBXBuildFile; fileRef = DC98A01719624B2600EE80F2 /* movie_long001.mov */; };
+		DCB637901A45E5C400B9AB0D /* movie_long002.mov in Resources */ = {isa = PBXBuildFile; fileRef = DC98A01819624B2600EE80F2 /* movie_long002.mov */; };
+		DCB637911A45E5C400B9AB0D /* movie_wipe001.mov in Resources */ = {isa = PBXBuildFile; fileRef = DC98A01919624B2600EE80F2 /* movie_wipe001.mov */; };
 		DCB8A6271947C0AC0064597C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB8A6261947C0AC0064597C /* AppDelegate.swift */; };
 		DCB8A62C1947C0AC0064597C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCB8A62A1947C0AC0064597C /* Main.storyboard */; };
 		DCB8A62E1947C0AC0064597C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCB8A62D1947C0AC0064597C /* Images.xcassets */; };
@@ -123,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCB6378C1A45DC3D00B9AB0D /* UIKit.framework in Frameworks */,
 				DC36E4041976430200815B59 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -322,6 +329,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCB6378E1A45E5C400B9AB0D /* movie002.mov in Resources */,
+				DCB6378F1A45E5C400B9AB0D /* movie_long001.mov in Resources */,
+				DCB637901A45E5C400B9AB0D /* movie_long002.mov in Resources */,
+				DCB637911A45E5C400B9AB0D /* movie_wipe001.mov in Resources */,
+				DCB6378D1A45E46C00B9AB0D /* movie001.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

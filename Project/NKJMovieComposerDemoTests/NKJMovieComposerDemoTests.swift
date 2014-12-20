@@ -24,7 +24,8 @@ class NKJMovieComposerDemoTests: XCTestCase {
     func testInstanceHasSomeDictionaryForMovies() {
 
         let movieComposition = NKJMovieComposer()
-        let movieURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("movie001", ofType: "mov")!)
+        let fileURL = NSBundle(forClass: NKJMovieComposerDemoTests.self).pathForResource("movie001", ofType: "mov")
+        let movieURL = NSURL(fileURLWithPath: fileURL!)
         movieComposition.addVideo(movieURL)
         movieComposition.addVideo(movieURL)
         movieComposition.addVideo(movieURL)
@@ -33,12 +34,14 @@ class NKJMovieComposerDemoTests: XCTestCase {
     }
     
     func testInstanceReturnsLayerInstruction() {
+
         let movieComposition = NKJMovieComposer()
-        let movieURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("movie001", ofType: "mov")!)
+        let fileURL = NSBundle(forClass: NKJMovieComposerDemoTests.self).pathForResource("movie001", ofType: "mov")
+        let movieURL = NSURL(fileURLWithPath: fileURL!)
         movieComposition.addVideo(movieURL)
         
         let layerInstruction = movieComposition.addVideo(movieURL)
         XCTAssertEqual(layerInstruction.trackID, 3 as CMPersistentTrackID, "trackID")
     }
-    
+
 }

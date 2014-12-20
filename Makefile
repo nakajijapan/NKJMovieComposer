@@ -18,8 +18,8 @@ build:
 		TEST_HOST=
 
 test:
-	xctool -arch i386 \
-		-destination "name=iPhone 5s,OS=8.0" \
+	xctool \
+		-destination "platform=iOS Simulator,name=iPhone 6,OS=8.1" \
 		-configuration Debug \
 		-sdk iphonesimulator \
 		-project $(PROJECT) \
