@@ -24,7 +24,7 @@ test:
 		-sdk iphonesimulator \
 		-project $(PROJECT) \
 		-scheme $(SCHEME_TARGET) \
-		clean test \
+		test -only NKJMovieComposerDemoTests \
 		-parallelize -freshSimulator -freshInstall --showTasks \
 		TEST_HOST= \
 		TEST_AFTER_BUILD=YES
