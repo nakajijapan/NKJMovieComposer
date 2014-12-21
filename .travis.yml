@@ -6,4 +6,4 @@ before_install:
   - brew install xctool
 
 script:
-  - make clean test
+  - make test
