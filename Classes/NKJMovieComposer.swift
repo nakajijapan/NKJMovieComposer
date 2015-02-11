@@ -9,15 +9,16 @@ import Foundation
 import AVFoundation
 import CoreMedia
 
-class NKJMovieComposer: NSObject {
-    var mixComposition: AVMutableComposition
-    var instruction: AVMutableVideoCompositionInstruction!
-    var videoComposition: AVMutableVideoComposition
-    var assetExportSession: AVAssetExportSession!
-    var currentTimeDuration: CMTime = kCMTimeZero
-    var layerInstructions: NSMutableArray
+public class Manager: NSObject {
     
-    override init() {
+    public var mixComposition: AVMutableComposition
+    public var instruction: AVMutableVideoCompositionInstruction!
+    public var videoComposition: AVMutableVideoComposition
+    public var assetExportSession: AVAssetExportSession!
+    public var currentTimeDuration: CMTime = kCMTimeZero
+    public var layerInstructions: NSMutableArray
+    
+    required public override init() {
         
         // AVMutableVideoCompositionLayerInstruction's List
         self.layerInstructions = NSMutableArray()
@@ -29,12 +30,12 @@ class NKJMovieComposer: NSObject {
         self.videoComposition = AVMutableVideoComposition()
         self.videoComposition.renderSize = CGSize(width: 640, height: 640)
         self.videoComposition.frameDuration = CMTimeMake(1, 24)
-
+        
     }
     
     
     // Add Video
-    func addVideo(movieURL: NSURL!) -> AVMutableVideoCompositionLayerInstruction! {
+    public func addVideo(movieURL: NSURL!) -> AVMutableVideoCompositionLayerInstruction! {
         
         var videoAsset = AVURLAsset(URL:movieURL, options:nil)
         var compositionVideoTrack: AVMutableCompositionTrack!
@@ -71,7 +72,7 @@ class NKJMovieComposer: NSObject {
     }
     
     // Cover Video
-    func coverVideo(movieURL: NSURL!, scale: CGAffineTransform, transform: CGAffineTransform) -> AVMutableVideoCompositionLayerInstruction {
+    public func coverVideo(movieURL: NSURL!, scale: CGAffineTransform, transform: CGAffineTransform) -> AVMutableVideoCompositionLayerInstruction {
         
         var videoAsset = AVURLAsset(URL:movieURL, options:nil)
         var compositionVideoTrack:AVMutableCompositionTrack!
@@ -99,12 +100,12 @@ class NKJMovieComposer: NSObject {
     }
     
     // Export
-    func readyToComposeVideo(composedMoviePath: String!) -> AVAssetExportSession! {
+    public func readyToComposeVideo(composedMoviePath: String!) -> AVAssetExportSession! {
         
         if composedMoviePath == nil {
             return nil
         }
-
+        
         // create instruction
         self.instruction = AVMutableVideoCompositionInstruction()
         self.instruction.timeRange = CMTimeRange(start: kCMTimeZero, duration: self.mixComposition.duration)
