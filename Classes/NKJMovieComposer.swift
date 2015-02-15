@@ -9,7 +9,7 @@ import Foundation
 import AVFoundation
 import CoreMedia
 
-public class Manager: NSObject {
+public class NKJMovieComposer {
     
     public var mixComposition: AVMutableComposition
     public var instruction: AVMutableVideoCompositionInstruction!
@@ -18,7 +18,7 @@ public class Manager: NSObject {
     public var currentTimeDuration: CMTime = kCMTimeZero
     public var layerInstructions: NSMutableArray
     
-    required public override init() {
+    public init() {
         
         // AVMutableVideoCompositionLayerInstruction's List
         self.layerInstructions = NSMutableArray()
