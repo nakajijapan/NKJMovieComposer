@@ -1,5 +1,6 @@
 # NKJMovieComposer
 
+[![CI Status](http://img.shields.io/travis/nakajijapan/NKJMovieComposer.svg?style=flat)](https://travis-ci.org/nakajijapan/NKJMovieComposer)
 [![Version](https://img.shields.io/cocoapods/v/NKJMovieComposer.svg?style=flat)](http://cocoadocs.org/docsets/NKJMovieComposer)
 [![License](https://img.shields.io/cocoapods/l/NKJMovieComposer.svg?style=flat)](http://cocoadocs.org/docsets/NKJMovieComposer)
 [![Platform](https://img.shields.io/cocoapods/p/NKJMovieComposer.svg?style=flat)](http://cocoadocs.org/docsets/NKJMovieComposer)
@@ -34,7 +35,7 @@ Append Movies.
 
 ```swift
         // movie
-        let movieURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("movie001", ofType: "mov"))
+        let movieURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("movie001", ofType: "mov"))
         layerInstruction = movieComposition.addVideo(movieURL)
 ```
 
@@ -54,14 +55,14 @@ Append Movies.
 
             // save to device
             var library = ALAssetsLibrary()
-            
+
             if library.videoAtPathIsCompatibleWithSavedPhotosAlbum(composedMovieUrl) {
                 library.writeVideoAtPathToSavedPhotosAlbum(composedMovieUrl, completionBlock: {(assetURL, assetError) -> Void in
 
-                    
+
                      // something code
-                    
-                    
+
+
                 })
 
              }
