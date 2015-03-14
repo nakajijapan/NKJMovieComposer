@@ -18,13 +18,13 @@ build:
 		TEST_HOST=
 
 test:
-	xctool -arch i386 \
-		-destination "name=iPhone Retina (4-inch),OS=7.0" \
+	xctool \
+		-destination "platform=iOS Simulator,name=iPhone 6,OS=8.1" \
 		-configuration Debug \
 		-sdk iphonesimulator \
 		-project $(PROJECT) \
 		-scheme $(SCHEME_TARGET) \
-		clean test \
+		test -only NKJMovieComposerDemoTests \
 		-parallelize -freshSimulator -freshInstall --showTasks \
 		TEST_HOST= \
 		TEST_AFTER_BUILD=YES
