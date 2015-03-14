@@ -17,9 +17,23 @@ NKJMovieComposer higher requires Xcode 6, targeting either iOS 8.0 and above, or
 
 ### CocoaPods
 
+[CocoaPods](http://cocoapods.org/) is a dependency manager for Cocoa projects.
+CocoaPods 0.36 adds supports for Swift and embedded frameworks. You can install it with the following command:
+
 ```
-pod "NKJMovieComposer"
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+use_frameworks!
+
+pod "NKJMovieComposer", '~> 1.0'
 ```
+
+Then, run the following command:
+
+```
+$ pod install
+```
+
 
 ## Usage
 
