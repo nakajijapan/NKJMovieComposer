@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                  = "NKJMovieComposer"
-  s.version               = "0.2.0"
+  s.version               = "1.0.0"
   s.summary               = "NKJMovieComposer is very simple movie composer for iOS."
   s.homepage              = "http://github.com/nakajijapan"
   s.license               = 'MIT'
