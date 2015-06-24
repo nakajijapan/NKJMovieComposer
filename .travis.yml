@@ -5,7 +5,6 @@ before_install:
 
 install:
   - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
-  - pod install --project-directory=Project/
 
 script:
   - make clean test
