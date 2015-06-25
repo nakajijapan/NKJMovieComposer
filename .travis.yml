@@ -1,9 +1,10 @@
 language: objective-c
 
 before_install:
-  - brew update
-  - brew uninstall xctool
-  - brew install xctool
+  - gem install xcpretty
+
+install:
+  - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
 
 script:
   - make clean test

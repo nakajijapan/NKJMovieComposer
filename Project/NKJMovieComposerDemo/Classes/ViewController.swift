@@ -30,7 +30,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         
         self.view.backgroundColor = UIColor.whiteColor()
         
-        var button:UIButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
+        var button:UIButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
         button.frame = CGRect(x: 10, y: 80, width: 200, height: 30)
         button.backgroundColor = UIColor.yellowColor()
         button.setTitle("compose video", forState: UIControlState.Normal)
@@ -74,7 +74,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         println("processing...")
         
         // generate save path
-        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let composeMoviePath = "\(NSTemporaryDirectory())composed.mov"
         appDelegate.composedMoviePath = composeMoviePath
         println("composedMoviePath: \(composeMoviePath)")

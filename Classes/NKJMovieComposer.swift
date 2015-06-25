@@ -40,7 +40,7 @@ public class NKJMovieComposer {
         var videoAsset = AVURLAsset(URL:movieURL, options:nil)
         var compositionVideoTrack: AVMutableCompositionTrack!
         var compositionAudioTrack: AVMutableCompositionTrack!
-        var videoTrack = videoAsset.tracksWithMediaType(AVMediaTypeVideo)[0] as AVAssetTrack
+        var videoTrack = videoAsset.tracksWithMediaType(AVMediaTypeVideo)[0] as! AVAssetTrack
         
         compositionVideoTrack = self.mixComposition.addMutableTrackWithMediaType(AVMediaTypeVideo, preferredTrackID: 0)
         compositionVideoTrack.insertTimeRange(
@@ -54,7 +54,7 @@ public class NKJMovieComposer {
         compositionAudioTrack = self.mixComposition.addMutableTrackWithMediaType(AVMediaTypeAudio, preferredTrackID: 0)
         compositionAudioTrack.insertTimeRange(
             CMTimeRange(start: kCMTimeZero, duration: videoAsset.duration),
-            ofTrack: videoAsset.tracksWithMediaType(AVMediaTypeAudio)[0] as AVAssetTrack,
+            ofTrack: videoAsset.tracksWithMediaType(AVMediaTypeAudio)[0] as! AVAssetTrack,
             atTime: self.currentTimeDuration,
             error: nil
         )
@@ -76,7 +76,7 @@ public class NKJMovieComposer {
         
         var videoAsset = AVURLAsset(URL:movieURL, options:nil)
         var compositionVideoTrack:AVMutableCompositionTrack!
-        var videoTrack = videoAsset.tracksWithMediaType(AVMediaTypeVideo)[0] as AVAssetTrack
+        var videoTrack = videoAsset.tracksWithMediaType(AVMediaTypeVideo)[0] as! AVAssetTrack
         
         compositionVideoTrack = self.mixComposition.addMutableTrackWithMediaType(AVMediaTypeVideo, preferredTrackID: CMPersistentTrackID(kCMPersistentTrackID_Invalid))
         compositionVideoTrack.insertTimeRange(
