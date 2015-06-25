@@ -1,0 +1,20 @@
+machine:
+  xcode:
+    version: "6.3.1"
+
+dependencies:
+  pre:
+    - brew install xcpretty
+
+test:
+  override:
+   - set -o pipefail &&
+     xcodebuild
+       CODE_SIGNING_REQUIRED=NO
+       CODE_SIGN_IDENTITY=
+       PROVISIONING_PROFILE=
+       -project Project/NKJMovieComposerDemo.xcodeproj
+       -scheme NKJMovieComposerDemo
+       -destination-timeout 1
+       -sdk iphonesimulator
+       -destination 'name=iPhone 6'
