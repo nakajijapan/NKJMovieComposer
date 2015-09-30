@@ -37,32 +37,34 @@ public class NKJMovieComposer {
     // Add Video
     public func addVideo(movieURL: NSURL!) -> AVMutableVideoCompositionLayerInstruction! {
         
-        var videoAsset = AVURLAsset(URL:movieURL, options:nil)
+        let videoAsset = AVURLAsset(URL:movieURL, options:nil)
         var compositionVideoTrack: AVMutableCompositionTrack!
         var compositionAudioTrack: AVMutableCompositionTrack!
-        var videoTrack = videoAsset.tracksWithMediaType(AVMediaTypeVideo)[0] as! AVAssetTrack
+        let videoTrack = videoAsset.tracksWithMediaType(AVMediaTypeVideo)[0] 
         
         compositionVideoTrack = self.mixComposition.addMutableTrackWithMediaType(AVMediaTypeVideo, preferredTrackID: 0)
-        compositionVideoTrack.insertTimeRange(
-            CMTimeRange(start: kCMTimeZero, duration: videoAsset.duration),
-            ofTrack: videoTrack,
-            atTime: self.currentTimeDuration,
-            error: nil
-        )
+        do {
+            try compositionVideoTrack.insertTimeRange(
+                CMTimeRange(start: kCMTimeZero, duration: videoAsset.duration),
+                ofTrack: videoTrack,
+                atTime: self.currentTimeDuration)
+        } catch _ {
+        }
         compositionVideoTrack.preferredTransform = videoTrack.preferredTransform
         
         compositionAudioTrack = self.mixComposition.addMutableTrackWithMediaType(AVMediaTypeAudio, preferredTrackID: 0)
-        compositionAudioTrack.insertTimeRange(
-            CMTimeRange(start: kCMTimeZero, duration: videoAsset.duration),
-            ofTrack: videoAsset.tracksWithMediaType(AVMediaTypeAudio)[0] as! AVAssetTrack,
-            atTime: self.currentTimeDuration,
-            error: nil
-        )
+        do {
+            try compositionAudioTrack.insertTimeRange(
+                CMTimeRange(start: kCMTimeZero, duration: videoAsset.duration),
+                ofTrack: videoAsset.tracksWithMediaType(AVMediaTypeAudio)[0] ,
+                atTime: self.currentTimeDuration)
+        } catch _ {
+        }
         
         self.currentTimeDuration = self.mixComposition.duration
         
         // Add Layer Instruction
-        var layerInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: compositionVideoTrack)
+        let layerInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: compositionVideoTrack)
         
         // Hide
         layerInstruction.setOpacity(0.0, atTime: self.currentTimeDuration)
@@ -74,17 +76,18 @@ public class NKJMovieComposer {
     // Cover Video
     public func coverVideo(movieURL: NSURL!, scale: CGAffineTransform, transform: CGAffineTransform) -> AVMutableVideoCompositionLayerInstruction {
         
-        var videoAsset = AVURLAsset(URL:movieURL, options:nil)
+        let videoAsset = AVURLAsset(URL:movieURL, options:nil)
         var compositionVideoTrack:AVMutableCompositionTrack!
-        var videoTrack = videoAsset.tracksWithMediaType(AVMediaTypeVideo)[0] as! AVAssetTrack
+        let videoTrack = videoAsset.tracksWithMediaType(AVMediaTypeVideo)[0] 
         
         compositionVideoTrack = self.mixComposition.addMutableTrackWithMediaType(AVMediaTypeVideo, preferredTrackID: CMPersistentTrackID(kCMPersistentTrackID_Invalid))
-        compositionVideoTrack.insertTimeRange(
-            CMTimeRange(start: kCMTimeZero, duration: videoAsset.duration),
-            ofTrack: videoTrack,
-            atTime: kCMTimeZero,
-            error: nil
-        )
+        do {
+            try compositionVideoTrack.insertTimeRange(
+                CMTimeRange(start: kCMTimeZero, duration: videoAsset.duration),
+                ofTrack: videoTrack,
+                atTime: kCMTimeZero)
+        } catch _ {
+        }
         compositionVideoTrack.preferredTransform = videoTrack.preferredTransform
         
         
@@ -122,7 +125,10 @@ public class NKJMovieComposer {
         
         // delete file
         if NSFileManager.defaultManager().fileExistsAtPath(composedMoviePath) {
-            NSFileManager.defaultManager().removeItemAtPath(composedMoviePath, error: nil)
+            do {
+                try NSFileManager.defaultManager().removeItemAtPath(composedMoviePath)
+            } catch _ {
+            }
         }
         return self.assetExportSession
     }
