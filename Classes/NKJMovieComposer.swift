@@ -11,23 +11,18 @@ import CoreMedia
 
 public class NKJMovieComposer {
     
-    public var mixComposition: AVMutableComposition
+    public var mixComposition = AVMutableComposition()
     public var instruction: AVMutableVideoCompositionInstruction!
-    public var videoComposition: AVMutableVideoComposition
+    public var videoComposition = AVMutableVideoComposition()
     public var assetExportSession: AVAssetExportSession!
     public var currentTimeDuration: CMTime = kCMTimeZero
-    public var layerInstructions: NSMutableArray
+
+    // AVMutableVideoCompositionLayerInstruction's List
+    public var layerInstructions:[AVVideoCompositionLayerInstruction] = []
     
     public init() {
         
-        // AVMutableVideoCompositionLayerInstruction's List
-        self.layerInstructions = NSMutableArray()
-        
-        // AVMutableComposition
-        self.mixComposition = AVMutableComposition()
-        
         // AVMutableVideoComposition
-        self.videoComposition = AVMutableVideoComposition()
         self.videoComposition.renderSize = CGSize(width: 640, height: 640)
         self.videoComposition.frameDuration = CMTimeMake(1, 24)
         
@@ -68,7 +63,7 @@ public class NKJMovieComposer {
         
         // Hide
         layerInstruction.setOpacity(0.0, atTime: self.currentTimeDuration)
-        self.layerInstructions.addObject(layerInstruction)
+        self.layerInstructions.append(layerInstruction)
         
         return layerInstruction
     }
@@ -97,7 +92,7 @@ public class NKJMovieComposer {
         
         // Hide
         layerInstruction.setOpacity(0.0, atTime: self.currentTimeDuration)
-        self.layerInstructions.addObject(layerInstruction)
+        self.layerInstructions.append(layerInstruction)
         
         return layerInstruction
     }
@@ -114,7 +109,7 @@ public class NKJMovieComposer {
         self.instruction.timeRange = CMTimeRange(start: kCMTimeZero, duration: self.mixComposition.duration)
         
         self.videoComposition.instructions = [self.instruction]
-        self.instruction.layerInstructions = self.layerInstructions.reverseObjectEnumerator().allObjects
+        self.instruction.layerInstructions = self.layerInstructions.reverse()
         
         // generate AVAssetExportSession based on the composition
         self.assetExportSession = AVAssetExportSession(asset: self.mixComposition, presetName: AVAssetExportPreset1280x720)
