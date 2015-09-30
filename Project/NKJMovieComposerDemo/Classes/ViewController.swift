@@ -21,7 +21,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -30,7 +30,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         
         self.view.backgroundColor = UIColor.whiteColor()
         
-        var button:UIButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+        let button:UIButton = UIButton(type: UIButtonType.System)
         button.frame = CGRect(x: 10, y: 80, width: 200, height: 30)
         button.backgroundColor = UIColor.yellowColor()
         button.setTitle("compose video", forState: UIControlState.Normal)
@@ -71,13 +71,13 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     
     func saveComposedVideo() {
         
-        println("processing...")
+        print("processing...")
         
         // generate save path
-        var appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let composeMoviePath = "\(NSTemporaryDirectory())composed.mov"
         appDelegate.composedMoviePath = composeMoviePath
-        println("composedMoviePath: \(composeMoviePath)")
+        print("composedMoviePath: \(composeMoviePath)")
 
         // Composing
         self.composingVideoToFileURLString(composeMoviePath)
@@ -149,14 +149,14 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         // export
         self.assetExportSession.exportAsynchronouslyWithCompletionHandler({() -> Void in
             if self.assetExportSession.status == AVAssetExportSessionStatus.Completed {
-                println("export session completed")
+                print("export session completed")
             }
             else {
-                println("export session error")
+                print("export session error")
             }
             
             // save to device
-            var library = ALAssetsLibrary()
+            let library = ALAssetsLibrary()
             
             if library.videoAtPathIsCompatibleWithSavedPhotosAlbum(composedMovieUrl) {
                 library.writeVideoAtPathToSavedPhotosAlbum(composedMovieUrl, completionBlock: {(assetURL, assetError) -> Void in
@@ -168,7 +168,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
                         self.loadingView.stop()
                         
                         // show success message
-                        var alert = UIAlertController(title: "Completion", message: "saved in Photo Album", preferredStyle: UIAlertControllerStyle.Alert)
+                        let alert = UIAlertController(title: "Completion", message: "saved in Photo Album", preferredStyle: UIAlertControllerStyle.Alert)
                         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(alertAction) -> Void in
                             let vc = ConfirmViewController(nibName: nil, bundle: nil)
                             self.navigationController?.pushViewController(vc, animated: true)
@@ -190,7 +190,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         })
         
         if self.assetExportSession.error != nil {
-            println("assetExportSession: \(self.assetExportSession.error)")
+            print("assetExportSession: \(self.assetExportSession.error)")
         }
         
     }

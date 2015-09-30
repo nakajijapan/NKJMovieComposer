@@ -18,7 +18,7 @@ class ConfirmViewController: UIViewController {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -28,7 +28,7 @@ class ConfirmViewController: UIViewController {
         self.view.backgroundColor = UIColor.whiteColor()
         
         self.appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        println("composedMoviePath = \(self.appDelegate.composedMoviePath)")
+        print("composedMoviePath = \(self.appDelegate.composedMoviePath)")
         let movieUrl = NSURL(fileURLWithPath: self.appDelegate.composedMoviePath)
 
         movielayer = MPMoviePlayerController(contentURL: movieUrl)
