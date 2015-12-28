@@ -11,6 +11,6 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
   s.osx.deployment_target = '10.10'
   s.requires_arc          = true
-  s.source_files          = 'Classes'
+  s.source_files          = 'Sources/Classes/**/*'
   s.frameworks            = 'AVFoundation'
 end

@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DC36E40319763F3C00815B59 /* NKJMovieComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB8A6451947C2B00064597C /* NKJMovieComposer.swift */; };
 		DC36E4041976430200815B59 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB8A6431947C1370064597C /* AVFoundation.framework */; };
 		DC456F621947C10D0044304C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC456F611947C10D0044304C /* UIKit.framework */; };
 		DC7925B919658F6F0010FDD6 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC7925B819658F6F0010FDD6 /* AssetsLibrary.framework */; };
+		DC79DE511C30F8BB001C598B /* NKJMovieComposer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC79DE501C30F8BB001C598B /* NKJMovieComposer.framework */; };
+		DC79DE521C30F8BB001C598B /* NKJMovieComposer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC79DE501C30F8BB001C598B /* NKJMovieComposer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DC98A01A19624B2600EE80F2 /* movie001.mov in Resources */ = {isa = PBXBuildFile; fileRef = DC98A01519624B2600EE80F2 /* movie001.mov */; };
 		DC98A01B19624B2600EE80F2 /* movie002.mov in Resources */ = {isa = PBXBuildFile; fileRef = DC98A01619624B2600EE80F2 /* movie002.mov */; };
 		DC98A01C19624B2600EE80F2 /* movie_long001.mov in Resources */ = {isa = PBXBuildFile; fileRef = DC98A01719624B2600EE80F2 /* movie_long001.mov */; };
@@ -27,13 +28,12 @@
 		DCB8A62E1947C0AC0064597C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCB8A62D1947C0AC0064597C /* Images.xcassets */; };
 		DCB8A63A1947C0AC0064597C /* NKJMovieComposerDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB8A6391947C0AC0064597C /* NKJMovieComposerDemoTests.swift */; };
 		DCB8A6441947C1370064597C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCB8A6431947C1370064597C /* AVFoundation.framework */; };
-		DCB8A6461947C2B00064597C /* NKJMovieComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB8A6451947C2B00064597C /* NKJMovieComposer.swift */; };
 		DCB8A6491947C3C80064597C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB8A6481947C3C80064597C /* ViewController.swift */; };
 		DCB8A64B1947C41B0064597C /* LoadingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB8A64A1947C41B0064597C /* LoadingImageView.swift */; };
 		DCB8A64D1947C4290064597C /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB8A64C1947C4290064597C /* ConfirmViewController.swift */; };
 		DCBF4B7D19605123008C5A6B /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCBF4B7C19605123008C5A6B /* CoreMedia.framework */; };
 		DCBF4B8019607872008C5A6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCBF4B7F19607872008C5A6B /* Foundation.framework */; };
-		DCF928BC1BBC33EA00C40621 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCF928BB1BBC33EA00C40621 /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
+		DCF928BC1BBC33EA00C40621 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCF928BB1BBC33EA00C40621 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,9 +88,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		DC79DE531C30F8BC001C598B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DC79DE521C30F8BB001C598B /* NKJMovieComposer.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		DC456F611947C10D0044304C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DC7925B819658F6F0010FDD6 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		DC79DE501C30F8BB001C598B /* NKJMovieComposer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = NKJMovieComposer.framework; path = "/Users/nakajijapan/Library/Developer/Xcode/DerivedData/NKJMovieComposer-bdtotqynwjxklmekxinizqiapnbp/Build/Products/Debug-iphoneos/NKJMovieComposer.framework"; sourceTree = "<absolute>"; };
 		DC98A01519624B2600EE80F2 /* movie001.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = movie001.mov; sourceTree = "<group>"; };
 		DC98A01619624B2600EE80F2 /* movie002.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = movie002.mov; sourceTree = "<group>"; };
 		DC98A01719624B2600EE80F2 /* movie_long001.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = movie_long001.mov; sourceTree = "<group>"; };
@@ -105,7 +120,6 @@
 		DCB8A6381947C0AC0064597C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DCB8A6391947C0AC0064597C /* NKJMovieComposerDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NKJMovieComposerDemoTests.swift; sourceTree = "<group>"; };
 		DCB8A6431947C1370064597C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		DCB8A6451947C2B00064597C /* NKJMovieComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NKJMovieComposer.swift; path = ../Classes/NKJMovieComposer.swift; sourceTree = "<group>"; };
 		DCB8A6481947C3C80064597C /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DCB8A64A1947C41B0064597C /* LoadingImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingImageView.swift; sourceTree = "<group>"; };
 		DCB8A64C1947C4290064597C /* ConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +134,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC7925B919658F6F0010FDD6 /* AssetsLibrary.framework in Frameworks */,
+				DC79DE511C30F8BB001C598B /* NKJMovieComposer.framework in Frameworks */,
 				DCBF4B8019607872008C5A6B /* Foundation.framework in Frameworks */,
 				DCBF4B7D19605123008C5A6B /* CoreMedia.framework in Frameworks */,
 				DCB8A6441947C1370064597C /* AVFoundation.framework in Frameworks */,
@@ -154,7 +169,6 @@
 		DCB8A6181947C0AC0064597C = {
 			isa = PBXGroup;
 			children = (
-				DCB8A6451947C2B00064597C /* NKJMovieComposer.swift */,
 				DCB8A6231947C0AC0064597C /* NKJMovieComposerDemo */,
 				DCB8A6361947C0AC0064597C /* NKJMovieComposerDemoTests */,
 				DCB8A6221947C0AC0064597C /* Products */,
@@ -223,6 +237,7 @@
 		DCBF4B7E19606A6D008C5A6B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DC79DE501C30F8BB001C598B /* NKJMovieComposer.framework */,
 				DC7925B819658F6F0010FDD6 /* AssetsLibrary.framework */,
 				DCBF4B7F19607872008C5A6B /* Foundation.framework */,
 				DC456F611947C10D0044304C /* UIKit.framework */,
@@ -242,6 +257,7 @@
 				DCB8A61D1947C0AC0064597C /* Sources */,
 				DCB8A61E1947C0AC0064597C /* Frameworks */,
 				DCB8A61F1947C0AC0064597C /* Resources */,
+				DC79DE531C30F8BC001C598B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -353,7 +369,6 @@
 				DCB8A64D1947C4290064597C /* ConfirmViewController.swift in Sources */,
 				DCB8A6491947C3C80064597C /* ViewController.swift in Sources */,
 				DCB8A64B1947C41B0064597C /* LoadingImageView.swift in Sources */,
-				DCB8A6461947C2B00064597C /* NKJMovieComposer.swift in Sources */,
 				DCB8A6271947C0AC0064597C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,7 +377,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC36E40319763F3C00815B59 /* NKJMovieComposer.swift in Sources */,
 				DCB8A63A1947C0AC0064597C /* NKJMovieComposerDemoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

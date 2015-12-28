@@ -10,6 +10,7 @@ import UIKit
 import AVFoundation
 import CoreMedia
 import AssetsLibrary
+import NKJMovieComposer
 
 class ViewController: UIViewController, UIAlertViewDelegate {
     
