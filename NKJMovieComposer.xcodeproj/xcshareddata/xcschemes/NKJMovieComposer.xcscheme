@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DC79DE311C30F67B001C598B"
-               BuildableName = "NKJMovieComposer.framework"
-               BlueprintName = "NKJMovieComposer"
+               BuildableName = "NKJMovieComposer-iOS.framework"
+               BlueprintName = "NKJMovieComposer-iOS"
                ReferencedContainer = "container:NKJMovieComposer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DC79DE3A1C30F67B001C598B"
+               BlueprintIdentifier = "DC79DE751C3104A0001C598B"
                BuildableName = "NKJMovieComposerTests.xctest"
                BlueprintName = "NKJMovieComposerTests"
                ReferencedContainer = "container:NKJMovieComposer.xcodeproj">
@@ -43,8 +43,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DC79DE311C30F67B001C598B"
-            BuildableName = "NKJMovieComposer.framework"
-            BlueprintName = "NKJMovieComposer"
+            BuildableName = "NKJMovieComposer-iOS.framework"
+            BlueprintName = "NKJMovieComposer-iOS"
             ReferencedContainer = "container:NKJMovieComposer.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -65,8 +65,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DC79DE311C30F67B001C598B"
-            BuildableName = "NKJMovieComposer.framework"
-            BlueprintName = "NKJMovieComposer"
+            BuildableName = "NKJMovieComposer-iOS.framework"
+            BlueprintName = "NKJMovieComposer-iOS"
             ReferencedContainer = "container:NKJMovieComposer.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -83,8 +83,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DC79DE311C30F67B001C598B"
-            BuildableName = "NKJMovieComposer.framework"
-            BlueprintName = "NKJMovieComposer"
+            BuildableName = "NKJMovieComposer-iOS.framework"
+            BlueprintName = "NKJMovieComposer-iOS"
             ReferencedContainer = "container:NKJMovieComposer.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
