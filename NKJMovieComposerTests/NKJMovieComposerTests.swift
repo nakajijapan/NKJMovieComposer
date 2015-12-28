@@ -1,15 +1,15 @@
 //
-//  NKJMovieComposerDemoTests.swift
-//  NKJMovieComposerDemoTests
+//  NKJMovieComposerTests.swift
+//  NKJMovieComposerTests
 //
-//  Created by nakajijapan on 2014/06/11.
-//  Copyright (c) 2014年 net.nakajijapan. All rights reserved.
+//  Created by nakajijapan on 2015/12/28.
+//  Copyright © 2015年 nakajijapan. All rights reserved.
 //
 
 import XCTest
 import AVFoundation
 
-class NKJMovieComposerDemoTests: XCTestCase {
+class NKJMovieComposerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -22,26 +22,26 @@ class NKJMovieComposerDemoTests: XCTestCase {
     }
     
     func testInstanceHasSomeDictionaryForMovies() {
-
+        
         let movieComposition = NKJMovieComposer()
-        let fileURL = NSBundle(forClass: NKJMovieComposerDemoTests.self).pathForResource("movie001", ofType: "mov")
+        let fileURL = NSBundle(forClass: NKJMovieComposerTests.self).pathForResource("movie001", ofType: "mov")
         let movieURL = NSURL(fileURLWithPath: fileURL!)
         movieComposition.addVideo(movieURL)
         movieComposition.addVideo(movieURL)
         movieComposition.addVideo(movieURL)
         XCTAssertEqual(movieComposition.layerInstructions.count, 3, "the count of layer instructions")
-
+        
     }
     
     func testInstanceReturnsLayerInstruction() {
-
+        
         let movieComposition = NKJMovieComposer()
-        let fileURL = NSBundle(forClass: NKJMovieComposerDemoTests.self).pathForResource("movie001", ofType: "mov")
+        let fileURL = NSBundle(forClass: NKJMovieComposerTests.self).pathForResource("movie001", ofType: "mov")
         let movieURL = NSURL(fileURLWithPath: fileURL!)
         movieComposition.addVideo(movieURL)
         
         let layerInstruction = movieComposition.addVideo(movieURL)
         XCTAssertEqual(layerInstruction.trackID, 3 as CMPersistentTrackID, "trackID")
     }
-
+    
 }

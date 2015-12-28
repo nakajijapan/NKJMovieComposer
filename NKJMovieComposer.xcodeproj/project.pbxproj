@@ -11,6 +11,14 @@
 		DC79DE4F1C30F78A001C598B /* NKJMovieComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC79DE2B1C30F61B001C598B /* NKJMovieComposer.swift */; };
 		DC79DE701C31003F001C598B /* NKJMovieComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC79DE2B1C30F61B001C598B /* NKJMovieComposer.swift */; };
 		DC79DE711C31026B001C598B /* NKJMovieComposer.h in Headers */ = {isa = PBXBuildFile; fileRef = DC79DE4A1C30F6E9001C598B /* NKJMovieComposer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DC79DE791C3104A0001C598B /* NKJMovieComposerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC79DE781C3104A0001C598B /* NKJMovieComposerTests.swift */; };
+		DC79DE7B1C3104A0001C598B /* NKJMovieComposer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC79DE321C30F67B001C598B /* NKJMovieComposer.framework */; };
+		DC79DE811C3105B6001C598B /* NKJMovieComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC79DE2B1C30F61B001C598B /* NKJMovieComposer.swift */; };
+		DC79DE831C310617001C598B /* movie001.mov in Resources */ = {isa = PBXBuildFile; fileRef = DC79DE821C310617001C598B /* movie001.mov */; };
+		DC79DE851C310621001C598B /* movie002.mov in Resources */ = {isa = PBXBuildFile; fileRef = DC79DE841C310621001C598B /* movie002.mov */; };
+		DC79DE871C310628001C598B /* movie_long001.mov in Resources */ = {isa = PBXBuildFile; fileRef = DC79DE861C310628001C598B /* movie_long001.mov */; };
+		DC79DE891C310630001C598B /* movie_long002.mov in Resources */ = {isa = PBXBuildFile; fileRef = DC79DE881C310630001C598B /* movie_long002.mov */; };
+		DC79DE8B1C310635001C598B /* movie_wipe001.mov in Resources */ = {isa = PBXBuildFile; fileRef = DC79DE8A1C310635001C598B /* movie_wipe001.mov */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -25,12 +33,30 @@
 		};
 /* End PBXBuildRule section */
 
+/* Begin PBXContainerItemProxy section */
+		DC79DE7C1C3104A0001C598B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DC79DE051C30F532001C598B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DC79DE311C30F67B001C598B;
+			remoteInfo = NKJMovieComposer;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		DC79DE2B1C30F61B001C598B /* NKJMovieComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NKJMovieComposer.swift; sourceTree = "<group>"; };
 		DC79DE321C30F67B001C598B /* NKJMovieComposer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NKJMovieComposer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC79DE491C30F6E9001C598B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC79DE4A1C30F6E9001C598B /* NKJMovieComposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKJMovieComposer.h; sourceTree = "<group>"; };
 		DC79DE591C30FDA6001C598B /* NKJMovieComposer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NKJMovieComposer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC79DE761C3104A0001C598B /* NKJMovieComposerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NKJMovieComposerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC79DE781C3104A0001C598B /* NKJMovieComposerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NKJMovieComposerTests.swift; sourceTree = "<group>"; };
+		DC79DE7A1C3104A0001C598B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DC79DE821C310617001C598B /* movie001.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = movie001.mov; path = NKJMovieComposerDemo/Movies/movie001.mov; sourceTree = "<group>"; };
+		DC79DE841C310621001C598B /* movie002.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = movie002.mov; path = NKJMovieComposerDemo/Movies/movie002.mov; sourceTree = "<group>"; };
+		DC79DE861C310628001C598B /* movie_long001.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = movie_long001.mov; path = NKJMovieComposerDemo/Movies/movie_long001.mov; sourceTree = "<group>"; };
+		DC79DE881C310630001C598B /* movie_long002.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = movie_long002.mov; path = NKJMovieComposerDemo/Movies/movie_long002.mov; sourceTree = "<group>"; };
+		DC79DE8A1C310635001C598B /* movie_wipe001.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = movie_wipe001.mov; path = NKJMovieComposerDemo/Movies/movie_wipe001.mov; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,14 +74,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DC79DE731C3104A0001C598B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC79DE7B1C3104A0001C598B /* NKJMovieComposer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		DC79DE041C30F532001C598B = {
 			isa = PBXGroup;
 			children = (
+				DC79DE8A1C310635001C598B /* movie_wipe001.mov */,
+				DC79DE881C310630001C598B /* movie_long002.mov */,
+				DC79DE861C310628001C598B /* movie_long001.mov */,
+				DC79DE841C310621001C598B /* movie002.mov */,
+				DC79DE821C310617001C598B /* movie001.mov */,
 				DC79DE281C30F61B001C598B /* Sources */,
 				DC79DE331C30F67B001C598B /* NKJMovieComposer */,
+				DC79DE771C3104A0001C598B /* NKJMovieComposerTests */,
 				DC79DE0E1C30F532001C598B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,6 +105,7 @@
 			children = (
 				DC79DE321C30F67B001C598B /* NKJMovieComposer.framework */,
 				DC79DE591C30FDA6001C598B /* NKJMovieComposer.framework */,
+				DC79DE761C3104A0001C598B /* NKJMovieComposerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -100,6 +141,15 @@
 				DC79DE4A1C30F6E9001C598B /* NKJMovieComposer.h */,
 			);
 			path = NKJMovieComposer;
+			sourceTree = "<group>";
+		};
+		DC79DE771C3104A0001C598B /* NKJMovieComposerTests */ = {
+			isa = PBXGroup;
+			children = (
+				DC79DE781C3104A0001C598B /* NKJMovieComposerTests.swift */,
+				DC79DE7A1C3104A0001C598B /* Info.plist */,
+			);
+			path = NKJMovieComposerTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,6 +211,24 @@
 			productReference = DC79DE591C30FDA6001C598B /* NKJMovieComposer.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		DC79DE751C3104A0001C598B /* NKJMovieComposerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DC79DE7E1C3104A0001C598B /* Build configuration list for PBXNativeTarget "NKJMovieComposerTests" */;
+			buildPhases = (
+				DC79DE721C3104A0001C598B /* Sources */,
+				DC79DE731C3104A0001C598B /* Frameworks */,
+				DC79DE741C3104A0001C598B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DC79DE7D1C3104A0001C598B /* PBXTargetDependency */,
+			);
+			name = NKJMovieComposerTests;
+			productName = NKJMovieComposerTests;
+			productReference = DC79DE761C3104A0001C598B /* NKJMovieComposerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -175,6 +243,9 @@
 						CreatedOnToolsVersion = 7.2;
 					};
 					DC79DE581C30FDA6001C598B = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					DC79DE751C3104A0001C598B = {
 						CreatedOnToolsVersion = 7.2;
 					};
 				};
@@ -193,6 +264,7 @@
 			projectRoot = "";
 			targets = (
 				DC79DE311C30F67B001C598B /* NKJMovieComposer */,
+				DC79DE751C3104A0001C598B /* NKJMovieComposerTests */,
 				DC79DE581C30FDA6001C598B /* NKJMovieComposer-Mac */,
 			);
 		};
@@ -210,6 +282,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DC79DE741C3104A0001C598B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC79DE831C310617001C598B /* movie001.mov in Resources */,
+				DC79DE851C310621001C598B /* movie002.mov in Resources */,
+				DC79DE871C310628001C598B /* movie_long001.mov in Resources */,
+				DC79DE891C310630001C598B /* movie_long002.mov in Resources */,
+				DC79DE8B1C310635001C598B /* movie_wipe001.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,7 +316,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DC79DE721C3104A0001C598B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC79DE791C3104A0001C598B /* NKJMovieComposerTests.swift in Sources */,
+				DC79DE811C3105B6001C598B /* NKJMovieComposer.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DC79DE7D1C3104A0001C598B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DC79DE311C30F67B001C598B /* NKJMovieComposer */;
+			targetProxy = DC79DE7C1C3104A0001C598B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		DC79DE1D1C30F532001C598B /* Debug */ = {
@@ -408,6 +509,28 @@
 			};
 			name = Release;
 		};
+		DC79DE7F1C3104A0001C598B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = NKJMovieComposerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.nakajijapan.NKJMovieComposerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		DC79DE801C3104A0001C598B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = NKJMovieComposerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.nakajijapan.NKJMovieComposerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -433,6 +556,14 @@
 			buildConfigurations = (
 				DC79DE6B1C30FDA6001C598B /* Debug */,
 				DC79DE6C1C30FDA6001C598B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		DC79DE7E1C3104A0001C598B /* Build configuration list for PBXNativeTarget "NKJMovieComposerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC79DE7F1C3104A0001C598B /* Debug */,
+				DC79DE801C3104A0001C598B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
