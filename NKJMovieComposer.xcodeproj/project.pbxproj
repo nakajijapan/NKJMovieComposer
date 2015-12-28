@@ -182,9 +182,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		DC79DE311C30F67B001C598B /* NKJMovieComposer */ = {
+		DC79DE311C30F67B001C598B /* NKJMovieComposer-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DC79DE431C30F67B001C598B /* Build configuration list for PBXNativeTarget "NKJMovieComposer" */;
+			buildConfigurationList = DC79DE431C30F67B001C598B /* Build configuration list for PBXNativeTarget "NKJMovieComposer-iOS" */;
 			buildPhases = (
 				DC79DE2D1C30F67B001C598B /* Sources */,
 				DC79DE2E1C30F67B001C598B /* Frameworks */,
@@ -196,7 +196,7 @@
 			);
 			dependencies = (
 			);
-			name = NKJMovieComposer;
+			name = "NKJMovieComposer-iOS";
 			productName = NKJMovieComposer;
 			productReference = DC79DE321C30F67B001C598B /* NKJMovieComposer.framework */;
 			productType = "com.apple.product-type.framework";
@@ -271,7 +271,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DC79DE311C30F67B001C598B /* NKJMovieComposer */,
+				DC79DE311C30F67B001C598B /* NKJMovieComposer-iOS */,
 				DC79DE751C3104A0001C598B /* NKJMovieComposerTests */,
 				DC79DE581C30FDA6001C598B /* NKJMovieComposer-Mac */,
 			);
@@ -338,7 +338,7 @@
 /* Begin PBXTargetDependency section */
 		DC79DE7D1C3104A0001C598B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = DC79DE311C30F67B001C598B /* NKJMovieComposer */;
+			target = DC79DE311C30F67B001C598B /* NKJMovieComposer-iOS */;
 			targetProxy = DC79DE7C1C3104A0001C598B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -440,7 +440,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.nakajijapan.NKJMovieComposer;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -461,7 +461,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.nakajijapan.NKJMovieComposer;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -551,7 +551,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DC79DE431C30F67B001C598B /* Build configuration list for PBXNativeTarget "NKJMovieComposer" */ = {
+		DC79DE431C30F67B001C598B /* Build configuration list for PBXNativeTarget "NKJMovieComposer-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DC79DE441C30F67B001C598B /* Debug */,
