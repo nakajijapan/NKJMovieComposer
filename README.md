@@ -1,5 +1,6 @@
 # NKJMovieComposer
 
+[![Carthage](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CI Status](http://img.shields.io/travis/nakajijapan/NKJMovieComposer.svg?style=flat)](https://travis-ci.org/nakajijapan/NKJMovieComposer)
 [![Version](https://img.shields.io/cocoapods/v/NKJMovieComposer.svg?style=flat)](http://cocoadocs.org/docsets/NKJMovieComposer)
 [![License](https://img.shields.io/cocoapods/l/NKJMovieComposer.svg?style=flat)](http://cocoadocs.org/docsets/NKJMovieComposer)
@@ -35,6 +36,27 @@ Then, run the following command:
 
 ```
 $ pod install
+```
+
+### Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager for Cocoa application.
+
+``` bash
+$ brew update
+$ brew install carthage
+```
+
+To integrate Kingfisher into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+``` ogdl
+github "nakajijapan/NKJMovieComposer"
+```
+
+Then, run the following command to build the Kingfisher framework:
+
+``` bash
+$ carthage update
 ```
 
 
@@ -96,5 +118,3 @@ nakajijapan
 ## License
 
 NKJMovieComposer is available under the MIT license. See the LICENSE file for more info.
-
-
