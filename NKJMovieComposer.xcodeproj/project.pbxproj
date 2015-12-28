@@ -88,12 +88,8 @@
 		DC79DE041C30F532001C598B = {
 			isa = PBXGroup;
 			children = (
-				DC79DE8A1C310635001C598B /* movie_wipe001.mov */,
-				DC79DE881C310630001C598B /* movie_long002.mov */,
-				DC79DE861C310628001C598B /* movie_long001.mov */,
-				DC79DE841C310621001C598B /* movie002.mov */,
-				DC79DE821C310617001C598B /* movie001.mov */,
 				DC79DE281C30F61B001C598B /* Sources */,
+				DC79DE8F1C310CF3001C598B /* Resouces */,
 				DC79DE331C30F67B001C598B /* NKJMovieComposer */,
 				DC79DE771C3104A0001C598B /* NKJMovieComposerTests */,
 				DC79DE0E1C30F532001C598B /* Products */,
@@ -150,6 +146,18 @@
 				DC79DE7A1C3104A0001C598B /* Info.plist */,
 			);
 			path = NKJMovieComposerTests;
+			sourceTree = "<group>";
+		};
+		DC79DE8F1C310CF3001C598B /* Resouces */ = {
+			isa = PBXGroup;
+			children = (
+				DC79DE8A1C310635001C598B /* movie_wipe001.mov */,
+				DC79DE881C310630001C598B /* movie_long002.mov */,
+				DC79DE861C310628001C598B /* movie_long001.mov */,
+				DC79DE841C310621001C598B /* movie002.mov */,
+				DC79DE821C310617001C598B /* movie001.mov */,
+			);
+			name = Resouces;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
