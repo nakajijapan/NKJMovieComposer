@@ -88,7 +88,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     
 
     func composingVideoToFileURLString(_ composedMoviePath: String) {
-        let movieComposition = NKJMovieComposer
+        let movieComposition = NKJMovieComposer()
         var layerInstruction: AVMutableVideoCompositionLayerInstruction
         
         // movie1
@@ -120,18 +120,18 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         */
         
         let movieURL = URL(fileURLWithPath: Bundle.main.path(forResource: "movie_wipe001", ofType: "mov")!)
-        movieComposition.coverVideo(
+        let _ = movieComposition.covertVideo(
             movieURL,
             scale: CGAffineTransform(scaleX: 0.3, y: 0.3), transform: CGAffineTransform(translationX: 426, y: 30)
         )
 
         // movie2
         let movieURL2 = URL(fileURLWithPath: Bundle.main.path(forResource: "movie002", ofType: "mov")!)
-        movieComposition.addVideo(movieURL2)
+        let _ = movieComposition.addVideo(movieURL2)
         
         // movie3
         let movieURL3 = URL(fileURLWithPath: Bundle.main.path(forResource: "movie001", ofType: "mov")!)
-        movieComposition.addVideo(movieURL3)
+        let _ = movieComposition.addVideo(movieURL3)
         
         // fade out
         startTime = CMTimeSubtract(movieComposition.currentTimeDuration, CMTimeMake(3, 1))
