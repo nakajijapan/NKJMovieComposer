@@ -69,7 +69,7 @@ open class NKJMovieComposer {
     }
     
     // Cover Video
-    open func coverVideo(_ movieURL: URL!, scale: CGAffineTransform, transform: CGAffineTransform) -> AVMutableVideoCompositionLayerInstruction {
+    open func covertVideo(_ movieURL: URL!, scale: CGAffineTransform, transform: CGAffineTransform) -> AVMutableVideoCompositionLayerInstruction {
         
         let videoAsset = AVURLAsset(url:movieURL, options:nil)
         var compositionVideoTrack:AVMutableCompositionTrack!
