@@ -2,12 +2,13 @@
 //  NKJMovieComposerTests.swift
 //  NKJMovieComposerTests
 //
-//  Created by nakajijapan on 2015/12/28.
-//  Copyright © 2015年 nakajijapan. All rights reserved.
+//  Created by nakajijapan on 2016/12/19.
+//  Copyright © 2016年 nakajijapan. All rights reserved.
 //
 
 import XCTest
 import AVFoundation
+import NKJMovieComposer
 
 class NKJMovieComposerTests: XCTestCase {
     
@@ -24,11 +25,11 @@ class NKJMovieComposerTests: XCTestCase {
     func testInstanceHasSomeDictionaryForMovies() {
         
         let movieComposition = NKJMovieComposer()
-        let fileURL = NSBundle(forClass: NKJMovieComposerTests.self).pathForResource("movie001", ofType: "mov")
-        let movieURL = NSURL(fileURLWithPath: fileURL!)
-        movieComposition.addVideo(movieURL)
-        movieComposition.addVideo(movieURL)
-        movieComposition.addVideo(movieURL)
+        let fileURL = Bundle(for: type(of: self)).path(forResource: "movie001", ofType: "mov")
+        let movieURL = URL(fileURLWithPath: fileURL!)
+        let _ = movieComposition.addVideo(movieURL)
+        let _ = movieComposition.addVideo(movieURL)
+        let _ = movieComposition.addVideo(movieURL)
         XCTAssertEqual(movieComposition.layerInstructions.count, 3, "the count of layer instructions")
         
     }
@@ -36,12 +37,11 @@ class NKJMovieComposerTests: XCTestCase {
     func testInstanceReturnsLayerInstruction() {
         
         let movieComposition = NKJMovieComposer()
-        let fileURL = NSBundle(forClass: NKJMovieComposerTests.self).pathForResource("movie001", ofType: "mov")
-        let movieURL = NSURL(fileURLWithPath: fileURL!)
-        movieComposition.addVideo(movieURL)
-        
+        let fileURL = Bundle(for: type(of: self)).path(forResource: "movie001", ofType: "mov")
+        let movieURL = URL(fileURLWithPath: fileURL!)
+        let _ = movieComposition.addVideo(movieURL)
         let layerInstruction = movieComposition.addVideo(movieURL)
-        XCTAssertEqual(layerInstruction.trackID, 3 as CMPersistentTrackID, "trackID")
+        XCTAssertEqual(layerInstruction?.trackID, 3 as CMPersistentTrackID, "trackID")
     }
     
 }

@@ -5,7 +5,7 @@ WORKSPACE = $(PROJECT).xcworkspace
 clean:
 	xcodebuild \
 		-workspace $(WORKSPACE) \
-		-scheme $(PROJECT)Demo \
+		-scheme $(PROJECT)-iOS \
 		clean
 
 build:

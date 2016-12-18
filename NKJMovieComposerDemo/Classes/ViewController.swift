@@ -15,42 +15,37 @@ import NKJMovieComposer
 class ViewController: UIViewController, UIAlertViewDelegate {
     
     var loadingView: LoadingImageView!
-    var composingTimer: NSTimer!
+    var composingTimer: Timer!
     var assetExportSession: AVAssetExportSession!
-    
-    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.white
         
-        let button:UIButton = UIButton(type: UIButtonType.System)
+        let button:UIButton = UIButton(type: UIButtonType.system)
         button.frame = CGRect(x: 10, y: 80, width: 200, height: 30)
-        button.backgroundColor = UIColor.yellowColor()
-        button.setTitle("compose video", forState: UIControlState.Normal)
-        button.addTarget(self, action: "pushSave:", forControlEvents: UIControlEvents.TouchUpInside)
-        self.view.addSubview(button)
+        button.backgroundColor = UIColor.yellow
+        button.setTitle("compose video", for: UIControlState())
+        button.addTarget(self, action: #selector(ViewController.pushSave(_:)), for: UIControlEvents.touchUpInside)
+        view.addSubview(button)
 
     }
     
-    func pushSave(sender:AnyObject) {
+    func pushSave(_ sender:AnyObject) {
         
-        self.loadingView = LoadingImageView(frame: self.view.frame, useProgress: true)
-        self.view.addSubview(loadingView)
-        loadingView.start()
-        
+        loadingView = LoadingImageView(frame: self.view.frame, useProgress: true)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        if let window = appDelegate.window, let rootViewController = window.rootViewController {
+            rootViewController.view.addSubview(loadingView)
+            loadingView.start()
+        }
+
         // continue to proccess for a certain period
-        self.composingTimer = NSTimer.scheduledTimerWithTimeInterval(
-            0.1,
+        composingTimer = Timer.scheduledTimer(
+            timeInterval: 0.1,
             target: self,
-            selector: "updateExportDisplay:",
+            selector: #selector(ViewController.updateExportDisplay(_:)),
             userInfo: nil,
             repeats: true
         )
@@ -61,11 +56,12 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     // Timer
 
     // reflect the progress status to the view
-    func updateExportDisplay(sender: AnyObject!) {
-        self.loadingView.progressView.progress = self.assetExportSession.progress
+    func updateExportDisplay(_ sender: AnyObject!) {
 
-        if self.assetExportSession.progress > 0.99 {
-            self.composingTimer.invalidate()
+        loadingView.progressView.progress = assetExportSession.progress
+
+        if assetExportSession.progress > 0.99 {
+            composingTimer.invalidate()
         }
 
     }
@@ -75,31 +71,31 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         print("processing...")
         
         // generate save path
-        let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         let composeMoviePath = "\(NSTemporaryDirectory())composed.mov"
         appDelegate.composedMoviePath = composeMoviePath
         print("composedMoviePath: \(composeMoviePath)")
 
         // Composing
-        self.composingVideoToFileURLString(composeMoviePath)
+        composingVideoToFileURLString(composeMoviePath)
     }
     
     // Composite Video
     
 
-    func composingVideoToFileURLString(composedMoviePath: String) {
+    func composingVideoToFileURLString(_ composedMoviePath: String) {
         let movieComposition = NKJMovieComposer()
         var layerInstruction: AVMutableVideoCompositionLayerInstruction
         
         // movie1
-        let movieURL1 = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("movie001", ofType: "mov")!)
+        let movieURL1 = URL(fileURLWithPath: Bundle.main.path(forResource: "movie001", ofType: "mov")!)
         layerInstruction = movieComposition.addVideo(movieURL1)
         
         // fade in
         var startTime = kCMTimeZero
         var timeDuration = CMTimeMake(3, 1)
-        layerInstruction.setOpacityRampFromStartOpacity(
-            0.0,
+        layerInstruction.setOpacityRamp(
+            fromStartOpacity: 0.0,
             toEndOpacity: 1.0,
             timeRange: CMTimeRange(start: startTime, duration: timeDuration)
         )
@@ -119,37 +115,37 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         )
         */
         
-        let movieURL = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("movie_wipe001", ofType: "mov")!)
-        movieComposition.coverVideo(
+        let movieURL = URL(fileURLWithPath: Bundle.main.path(forResource: "movie_wipe001", ofType: "mov")!)
+        let _ = movieComposition.covertVideo(
             movieURL,
-            scale: CGAffineTransformMakeScale(0.3, 0.3), transform: CGAffineTransformMakeTranslation(426, 30)
+            scale: CGAffineTransform(scaleX: 0.3, y: 0.3), transform: CGAffineTransform(translationX: 426, y: 30)
         )
 
         // movie2
-        let movieURL2 = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("movie002", ofType: "mov")!)
-        movieComposition.addVideo(movieURL2)
+        let movieURL2 = URL(fileURLWithPath: Bundle.main.path(forResource: "movie002", ofType: "mov")!)
+        let _ = movieComposition.addVideo(movieURL2)
         
         // movie3
-        let movieURL3 = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("movie001", ofType: "mov")!)
-        movieComposition.addVideo(movieURL3)
+        let movieURL3 = URL(fileURLWithPath: Bundle.main.path(forResource: "movie001", ofType: "mov")!)
+        let _ = movieComposition.addVideo(movieURL3)
         
         // fade out
         startTime = CMTimeSubtract(movieComposition.currentTimeDuration, CMTimeMake(3, 1))
         timeDuration = CMTimeMake(3, 1)
         
-        layerInstruction.setOpacityRampFromStartOpacity(
-            1.0,
+        layerInstruction.setOpacityRamp(
+            fromStartOpacity: 1.0,
             toEndOpacity: 0.0,
             timeRange: CMTimeRangeMake(startTime, timeDuration)
         )
         
         // compose
         self.assetExportSession = movieComposition.readyToComposeVideo(composedMoviePath)
-        let composedMovieUrl = NSURL.fileURLWithPath(composedMoviePath)
+        let composedMovieUrl = URL(fileURLWithPath: composedMoviePath)
 
         // export
-        self.assetExportSession.exportAsynchronouslyWithCompletionHandler({() -> Void in
-            if self.assetExportSession.status == AVAssetExportSessionStatus.Completed {
+        self.assetExportSession.exportAsynchronously(completionHandler: {() -> Void in
+            if self.assetExportSession.status == AVAssetExportSessionStatus.completed {
                 print("export session completed")
             }
             else {
@@ -159,25 +155,25 @@ class ViewController: UIViewController, UIAlertViewDelegate {
             // save to device
             let library = ALAssetsLibrary()
             
-            if library.videoAtPathIsCompatibleWithSavedPhotosAlbum(composedMovieUrl) {
-                library.writeVideoAtPathToSavedPhotosAlbum(composedMovieUrl, completionBlock: {(assetURL, assetError) -> Void in
+            if library.videoAtPathIs(compatibleWithSavedPhotosAlbum: composedMovieUrl) {
+                library.writeVideoAtPath(toSavedPhotosAlbum: composedMovieUrl, completionBlock: {(assetURL, assetError) -> Void in
 
                     
-                    dispatch_async(dispatch_get_main_queue(), {
+                    DispatchQueue.main.async(execute: {
                         
                         // hide
                         self.loadingView.stop()
                         
                         // show success message
-                        let alert = UIAlertController(title: "Completion", message: "saved in Photo Album", preferredStyle: UIAlertControllerStyle.Alert)
-                        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(alertAction) -> Void in
+                        let alert = UIAlertController(title: "Completion", message: "saved in Photo Album", preferredStyle: UIAlertControllerStyle.alert)
+                        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(alertAction) -> Void in
                             let vc = ConfirmViewController(nibName: nil, bundle: nil)
                             self.navigationController?.pushViewController(vc, animated: true)
                         })
                         alert.addAction(okAction)
                         
 
-                        self.presentViewController(alert, animated: true, completion: nil)
+                        self.present(alert, animated: true, completion: nil)
                         
                     })
                     

@@ -15,17 +15,17 @@ class LoadingImageView: UIImageView {
     init(frame: CGRect, useProgress: Bool) {
         super.init(frame: frame);
         
-        self.backgroundColor = UIColor.blackColor()
+        backgroundColor = UIColor.black
         
         if useProgress {
             let width  = frame.size.width
             let height = frame.size.height
 
-            self.progressView = UIProgressView(progressViewStyle: UIProgressViewStyle.Default)
-            self.progressView.frame = CGRect(x: 20, y: height / 2, width: width - 20 * 2, height: 3)
-            self.progressView.progressTintColor = UIColor.redColor()
-            self.progressView.progress = 0.0
-            self.addSubview(self.progressView)
+            progressView = UIProgressView(progressViewStyle: UIProgressViewStyle.default)
+            progressView.frame = CGRect(x: 20, y: height / 2, width: width - 20 * 2, height: 3)
+            progressView.progressTintColor = UIColor.red
+            progressView.progress = 0.0
+            addSubview(progressView)
         }
 
     }
@@ -36,29 +36,29 @@ class LoadingImageView: UIImageView {
     
     func start() {
 
-        self.alpha = 0.0
+        alpha = 0.0
 
-        UIView.animateWithDuration(
-            0.2,
+        UIView.animate(
+            withDuration: 0.2,
             delay: 0.0,
-            options: UIViewAnimationOptions.CurveEaseIn,
-            animations: {() -> Void in
-                self.alpha = 0.8
+            options: UIViewAnimationOptions.curveEaseIn,
+            animations: { [weak self] in
+                self?.alpha = 0.8
             },
-            completion: {(Bool) -> Void in
-                self.alpha = 0.8
+            completion: { [weak self] finish in
+                self?.alpha = 0.8
             })
     }
     
     func stop() {
         
-        UIView.animateWithDuration(
-            0.2,
-            animations: {() -> Void in
-                self.alpha = 0
+        UIView.animate(
+            withDuration: 0.2,
+            animations: { [weak self] in
+                self?.alpha = 0
             },
-            completion: {(Bool) -> Void in
-                self.removeFromSuperview()
+            completion: { [weak self] finish in
+                self?.removeFromSuperview()
             })
     }
     
