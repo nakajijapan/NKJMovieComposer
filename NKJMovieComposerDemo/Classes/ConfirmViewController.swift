@@ -11,7 +11,7 @@ import MediaPlayer
 
 class ConfirmViewController: UIViewController {
     
-    var appDelegate:AppDelegate!
+    var appDelegate: AppDelegate!
     var movielayer: MPMoviePlayerController!
     
     override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
@@ -25,9 +25,9 @@ class ConfirmViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.white
         
-        self.appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate = UIApplication.shared.delegate as! AppDelegate
         print("composedMoviePath = \(self.appDelegate.composedMoviePath)")
         let movieUrl = URL(fileURLWithPath: self.appDelegate.composedMoviePath)
 
@@ -35,10 +35,12 @@ class ConfirmViewController: UIViewController {
         movielayer.controlStyle = MPMovieControlStyle.embedded
         movielayer.scalingMode = MPMovieScalingMode.aspectFill
         movielayer.view.backgroundColor = UIColor.lightGray
-        movielayer.view.frame = CGRect(x: 0, y: 74, width: 320, height: 320)
+        
+        let size = UIScreen.main.bounds.size
+        movielayer.view.frame = CGRect(x: 0, y: 74, width: size.width, height: size.width)
         movielayer.prepareToPlay()
         
-        self.view.addSubview(movielayer.view)
+        view.addSubview(movielayer.view)
         
     }
 
