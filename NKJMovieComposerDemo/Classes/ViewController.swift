@@ -42,10 +42,13 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     
     func pushSave(_ sender:AnyObject) {
         
-        self.loadingView = LoadingImageView(frame: self.view.frame, useProgress: true)
-        self.view.addSubview(loadingView)
-        loadingView.start()
-        
+        loadingView = LoadingImageView(frame: self.view.frame, useProgress: true)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        if let window = appDelegate.window, let rootViewController = window.rootViewController {
+            rootViewController.view.addSubview(loadingView)
+            loadingView.start()
+        }
+
         // continue to proccess for a certain period
         self.composingTimer = Timer.scheduledTimer(
             timeInterval: 0.1,
@@ -62,10 +65,11 @@ class ViewController: UIViewController, UIAlertViewDelegate {
 
     // reflect the progress status to the view
     func updateExportDisplay(_ sender: AnyObject!) {
-        self.loadingView.progressView.progress = self.assetExportSession.progress
 
-        if self.assetExportSession.progress > 0.99 {
-            self.composingTimer.invalidate()
+        loadingView.progressView.progress = self.assetExportSession.progress
+
+        if assetExportSession.progress > 0.99 {
+            composingTimer.invalidate()
         }
 
     }
@@ -81,7 +85,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         print("composedMoviePath: \(composeMoviePath)")
 
         // Composing
-        self.composingVideoToFileURLString(composeMoviePath)
+        composingVideoToFileURLString(composeMoviePath)
     }
     
     // Composite Video

@@ -42,11 +42,11 @@ class LoadingImageView: UIImageView {
             withDuration: 0.2,
             delay: 0.0,
             options: UIViewAnimationOptions.curveEaseIn,
-            animations: {() -> Void in
-                self.alpha = 0.8
+            animations: { [weak self] in
+                self?.alpha = 0.8
             },
-            completion: {(Bool) -> Void in
-                self.alpha = 0.8
+            completion: { [weak self] finish in
+                self?.alpha = 0.8
             })
     }
     
@@ -54,11 +54,11 @@ class LoadingImageView: UIImageView {
         
         UIView.animate(
             withDuration: 0.2,
-            animations: {() -> Void in
-                self.alpha = 0
+            animations: { [weak self] in
+                self?.alpha = 0
             },
-            completion: {(Bool) -> Void in
-                self.removeFromSuperview()
+            completion: { [weak self] finish in
+                self?.removeFromSuperview()
             })
     }
     
