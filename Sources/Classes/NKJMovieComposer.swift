@@ -44,6 +44,7 @@ open class NKJMovieComposer {
                 of: videoTrack,
                 at: currentTimeDuration)
         } catch _ {
+            print("Error: AVMediaTypeVideo")
         }
         compositionVideoTrack.preferredTransform = videoTrack.preferredTransform
         
@@ -54,6 +55,7 @@ open class NKJMovieComposer {
                 of: videoAsset.tracks(withMediaType: AVMediaTypeAudio)[0] ,
                 at: currentTimeDuration)
         } catch _ {
+            print("Error: AVMediaTypeAudio")
         }
         
         currentTimeDuration = mixComposition.duration
@@ -82,6 +84,7 @@ open class NKJMovieComposer {
                 of: videoTrack,
                 at: kCMTimeZero)
         } catch _ {
+            print("Error: AVMediaTypeVideo")
         }
         compositionVideoTrack.preferredTransform = videoTrack.preferredTransform
         
@@ -123,6 +126,8 @@ open class NKJMovieComposer {
             do {
                 try FileManager.default.removeItem(atPath: composedMoviePath)
             } catch _ {
+                print("Error: AVMediaTypeVideo")
+    
             }
         }
         return assetExportSession
