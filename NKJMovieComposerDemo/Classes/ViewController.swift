@@ -18,25 +18,17 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     var composingTimer: Timer!
     var assetExportSession: AVAssetExportSession!
     
-    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.white
         
         let button:UIButton = UIButton(type: UIButtonType.system)
         button.frame = CGRect(x: 10, y: 80, width: 200, height: 30)
         button.backgroundColor = UIColor.yellow
         button.setTitle("compose video", for: UIControlState())
         button.addTarget(self, action: #selector(ViewController.pushSave(_:)), for: UIControlEvents.touchUpInside)
-        self.view.addSubview(button)
+        view.addSubview(button)
 
     }
     
@@ -50,7 +42,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         }
 
         // continue to proccess for a certain period
-        self.composingTimer = Timer.scheduledTimer(
+        composingTimer = Timer.scheduledTimer(
             timeInterval: 0.1,
             target: self,
             selector: #selector(ViewController.updateExportDisplay(_:)),
@@ -66,7 +58,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     // reflect the progress status to the view
     func updateExportDisplay(_ sender: AnyObject!) {
 
-        loadingView.progressView.progress = self.assetExportSession.progress
+        loadingView.progressView.progress = assetExportSession.progress
 
         if assetExportSession.progress > 0.99 {
             composingTimer.invalidate()
