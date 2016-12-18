@@ -249,6 +249,7 @@
 				TargetAttributes = {
 					DC79DE311C30F67B001C598B = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0810;
 					};
 					DC79DE581C30FDA6001C598B = {
 						CreatedOnToolsVersion = 7.2;
@@ -442,6 +443,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.nakajijapan.NKJMovieComposer;
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -463,6 +465,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.nakajijapan.NKJMovieComposer;
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -558,6 +561,7 @@
 				DC79DE451C30F67B001C598B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DC79DE6A1C30FDA6001C598B /* Build configuration list for PBXNativeTarget "NKJMovieComposer-Mac" */ = {
 			isa = XCConfigurationList;
@@ -566,6 +570,7 @@
 				DC79DE6C1C30FDA6001C598B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DC79DE7E1C3104A0001C598B /* Build configuration list for PBXNativeTarget "NKJMovieComposerTests" */ = {
 			isa = XCConfigurationList;
@@ -574,6 +579,7 @@
 				DC79DE801C3104A0001C598B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

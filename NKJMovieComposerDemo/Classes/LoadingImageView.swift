@@ -15,15 +15,15 @@ class LoadingImageView: UIImageView {
     init(frame: CGRect, useProgress: Bool) {
         super.init(frame: frame);
         
-        self.backgroundColor = UIColor.blackColor()
+        self.backgroundColor = UIColor.black
         
         if useProgress {
             let width  = frame.size.width
             let height = frame.size.height
 
-            self.progressView = UIProgressView(progressViewStyle: UIProgressViewStyle.Default)
+            self.progressView = UIProgressView(progressViewStyle: UIProgressViewStyle.default)
             self.progressView.frame = CGRect(x: 20, y: height / 2, width: width - 20 * 2, height: 3)
-            self.progressView.progressTintColor = UIColor.redColor()
+            self.progressView.progressTintColor = UIColor.red
             self.progressView.progress = 0.0
             self.addSubview(self.progressView)
         }
@@ -38,10 +38,10 @@ class LoadingImageView: UIImageView {
 
         self.alpha = 0.0
 
-        UIView.animateWithDuration(
-            0.2,
+        UIView.animate(
+            withDuration: 0.2,
             delay: 0.0,
-            options: UIViewAnimationOptions.CurveEaseIn,
+            options: UIViewAnimationOptions.curveEaseIn,
             animations: {() -> Void in
                 self.alpha = 0.8
             },
@@ -52,8 +52,8 @@ class LoadingImageView: UIImageView {
     
     func stop() {
         
-        UIView.animateWithDuration(
-            0.2,
+        UIView.animate(
+            withDuration: 0.2,
             animations: {() -> Void in
                 self.alpha = 0
             },

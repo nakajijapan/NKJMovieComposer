@@ -9,16 +9,16 @@ import Foundation
 import AVFoundation
 import CoreMedia
 
-public class NKJMovieComposer {
+open class NKJMovieComposer {
     
-    public var mixComposition = AVMutableComposition()
-    public var instruction: AVMutableVideoCompositionInstruction!
-    public var videoComposition = AVMutableVideoComposition()
-    public var assetExportSession: AVAssetExportSession!
-    public var currentTimeDuration: CMTime = kCMTimeZero
+    open var mixComposition = AVMutableComposition()
+    open var instruction: AVMutableVideoCompositionInstruction!
+    open var videoComposition = AVMutableVideoComposition()
+    open var assetExportSession: AVAssetExportSession!
+    open var currentTimeDuration: CMTime = kCMTimeZero
 
     // AVMutableVideoCompositionLayerInstruction's List
-    public var layerInstructions:[AVVideoCompositionLayerInstruction] = []
+    open var layerInstructions:[AVVideoCompositionLayerInstruction] = []
     
     public init() {
         
@@ -30,29 +30,29 @@ public class NKJMovieComposer {
     
     
     // Add Video
-    public func addVideo(movieURL: NSURL!) -> AVMutableVideoCompositionLayerInstruction! {
+    open func addVideo(_ movieURL: URL!) -> AVMutableVideoCompositionLayerInstruction! {
         
-        let videoAsset = AVURLAsset(URL:movieURL, options:nil)
+        let videoAsset = AVURLAsset(url:movieURL, options:nil)
         var compositionVideoTrack: AVMutableCompositionTrack!
         var compositionAudioTrack: AVMutableCompositionTrack!
-        let videoTrack = videoAsset.tracksWithMediaType(AVMediaTypeVideo)[0] 
+        let videoTrack = videoAsset.tracks(withMediaType: AVMediaTypeVideo)[0] 
         
-        compositionVideoTrack = self.mixComposition.addMutableTrackWithMediaType(AVMediaTypeVideo, preferredTrackID: 0)
+        compositionVideoTrack = self.mixComposition.addMutableTrack(withMediaType: AVMediaTypeVideo, preferredTrackID: 0)
         do {
             try compositionVideoTrack.insertTimeRange(
                 CMTimeRange(start: kCMTimeZero, duration: videoAsset.duration),
-                ofTrack: videoTrack,
-                atTime: self.currentTimeDuration)
+                of: videoTrack,
+                at: self.currentTimeDuration)
         } catch _ {
         }
         compositionVideoTrack.preferredTransform = videoTrack.preferredTransform
         
-        compositionAudioTrack = self.mixComposition.addMutableTrackWithMediaType(AVMediaTypeAudio, preferredTrackID: 0)
+        compositionAudioTrack = self.mixComposition.addMutableTrack(withMediaType: AVMediaTypeAudio, preferredTrackID: 0)
         do {
             try compositionAudioTrack.insertTimeRange(
                 CMTimeRange(start: kCMTimeZero, duration: videoAsset.duration),
-                ofTrack: videoAsset.tracksWithMediaType(AVMediaTypeAudio)[0] ,
-                atTime: self.currentTimeDuration)
+                of: videoAsset.tracks(withMediaType: AVMediaTypeAudio)[0] ,
+                at: self.currentTimeDuration)
         } catch _ {
         }
         
@@ -62,25 +62,25 @@ public class NKJMovieComposer {
         let layerInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: compositionVideoTrack)
         
         // Hide
-        layerInstruction.setOpacity(0.0, atTime: self.currentTimeDuration)
+        layerInstruction.setOpacity(0.0, at: self.currentTimeDuration)
         self.layerInstructions.append(layerInstruction)
         
         return layerInstruction
     }
     
     // Cover Video
-    public func coverVideo(movieURL: NSURL!, scale: CGAffineTransform, transform: CGAffineTransform) -> AVMutableVideoCompositionLayerInstruction {
+    open func coverVideo(_ movieURL: URL!, scale: CGAffineTransform, transform: CGAffineTransform) -> AVMutableVideoCompositionLayerInstruction {
         
-        let videoAsset = AVURLAsset(URL:movieURL, options:nil)
+        let videoAsset = AVURLAsset(url:movieURL, options:nil)
         var compositionVideoTrack:AVMutableCompositionTrack!
-        let videoTrack = videoAsset.tracksWithMediaType(AVMediaTypeVideo)[0] 
+        let videoTrack = videoAsset.tracks(withMediaType: AVMediaTypeVideo)[0] 
         
-        compositionVideoTrack = self.mixComposition.addMutableTrackWithMediaType(AVMediaTypeVideo, preferredTrackID: CMPersistentTrackID(kCMPersistentTrackID_Invalid))
+        compositionVideoTrack = self.mixComposition.addMutableTrack(withMediaType: AVMediaTypeVideo, preferredTrackID: CMPersistentTrackID(kCMPersistentTrackID_Invalid))
         do {
             try compositionVideoTrack.insertTimeRange(
                 CMTimeRange(start: kCMTimeZero, duration: videoAsset.duration),
-                ofTrack: videoTrack,
-                atTime: kCMTimeZero)
+                of: videoTrack,
+                at: kCMTimeZero)
         } catch _ {
         }
         compositionVideoTrack.preferredTransform = videoTrack.preferredTransform
@@ -88,17 +88,17 @@ public class NKJMovieComposer {
         
         var layerInstruction:AVMutableVideoCompositionLayerInstruction
         layerInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: compositionVideoTrack)
-        layerInstruction.setTransform(CGAffineTransformConcat(scale, transform), atTime: kCMTimeZero)
+        layerInstruction.setTransform(scale.concatenating(transform), at: kCMTimeZero)
         
         // Hide
-        layerInstruction.setOpacity(0.0, atTime: self.currentTimeDuration)
+        layerInstruction.setOpacity(0.0, at: self.currentTimeDuration)
         self.layerInstructions.append(layerInstruction)
         
         return layerInstruction
     }
     
     // Export
-    public func readyToComposeVideo(composedMoviePath: String!) -> AVAssetExportSession! {
+    open func readyToComposeVideo(_ composedMoviePath: String!) -> AVAssetExportSession! {
         
         if composedMoviePath == nil {
             return nil
@@ -109,19 +109,19 @@ public class NKJMovieComposer {
         self.instruction.timeRange = CMTimeRange(start: kCMTimeZero, duration: self.mixComposition.duration)
         
         self.videoComposition.instructions = [self.instruction]
-        self.instruction.layerInstructions = self.layerInstructions.reverse()
+        self.instruction.layerInstructions = self.layerInstructions.reversed()
         
         // generate AVAssetExportSession based on the composition
         self.assetExportSession = AVAssetExportSession(asset: self.mixComposition, presetName: AVAssetExportPreset1280x720)
         self.assetExportSession.videoComposition = self.videoComposition
         self.assetExportSession.outputFileType = AVFileTypeQuickTimeMovie
-        self.assetExportSession.outputURL = NSURL(fileURLWithPath: composedMoviePath)
+        self.assetExportSession.outputURL = URL(fileURLWithPath: composedMoviePath)
         self.assetExportSession.shouldOptimizeForNetworkUse = true
         
         // delete file
-        if NSFileManager.defaultManager().fileExistsAtPath(composedMoviePath) {
+        if FileManager.default.fileExists(atPath: composedMoviePath) {
             do {
-                try NSFileManager.defaultManager().removeItemAtPath(composedMoviePath)
+                try FileManager.default.removeItem(atPath: composedMoviePath)
             } catch _ {
             }
         }
