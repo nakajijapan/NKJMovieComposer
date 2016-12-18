@@ -30,7 +30,7 @@ open class NKJMovieComposer {
     
     
     // Add Video
-    open func addVideo(_ movieURL: URL!) -> AVMutableVideoCompositionLayerInstruction! {
+    open func addVideo(_ movieURL: URL) -> AVMutableVideoCompositionLayerInstruction! {
         
         let videoAsset = AVURLAsset(url:movieURL, options:nil)
         var compositionVideoTrack: AVMutableCompositionTrack!
@@ -71,7 +71,7 @@ open class NKJMovieComposer {
     }
     
     // Cover Video
-    open func covertVideo(_ movieURL: URL!, scale: CGAffineTransform, transform: CGAffineTransform) -> AVMutableVideoCompositionLayerInstruction {
+    open func covertVideo(_ movieURL: URL, scale: CGAffineTransform, transform: CGAffineTransform) -> AVMutableVideoCompositionLayerInstruction {
         
         let videoAsset = AVURLAsset(url:movieURL, options:nil)
         var compositionVideoTrack:AVMutableCompositionTrack!
@@ -101,11 +101,7 @@ open class NKJMovieComposer {
     }
     
     // Export
-    open func readyToComposeVideo(_ composedMoviePath: String!) -> AVAssetExportSession! {
-        
-        if composedMoviePath == nil {
-            return nil
-        }
+    open func readyToComposeVideo(_ composedMoviePath: String) -> AVAssetExportSession! {
         
         // create instruction
         instruction = AVMutableVideoCompositionInstruction()
