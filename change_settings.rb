@@ -25,7 +25,7 @@ def change_swift_version(config)
 end
 
 workspace = Xcodeproj::Workspace.new_from_xcworkspace(path)
-workspace.schemes.each do |key, value|
+workspace.schemes.each do |_, value|
   project = Xcodeproj::Project.open(value)
   change_build_settings(project)
   project.save
