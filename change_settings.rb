@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 require 'xcodeproj'
 
-project_paths = ['./NKJMovieComposer.xcodeproj', './NKJMovieComposerDemo.xcodeproj']
-
+# settings
+project_paths = [
+  './NKJMovieComposer.xcodeproj',
+  './NKJMovieComposerDemo.xcodeproj'
+]
 
 def change_build_settings(project)
   project.targets.each do |target|
