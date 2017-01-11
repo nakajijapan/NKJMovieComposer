@@ -10,6 +10,7 @@ import UIKit
 import AVFoundation
 import CoreMedia
 import AssetsLibrary
+import Photos
 import NKJMovieComposer
 
 class ViewController: UIViewController, UIAlertViewDelegate {
@@ -143,6 +144,8 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         self.assetExportSession = movieComposition.readyToComposeVideo(composedMoviePath)
         let composedMovieUrl = URL(fileURLWithPath: composedMoviePath)
 
+        
+        
         // export
         self.assetExportSession.exportAsynchronously(completionHandler: {() -> Void in
             if self.assetExportSession.status == AVAssetExportSessionStatus.completed {
@@ -152,12 +155,33 @@ class ViewController: UIViewController, UIAlertViewDelegate {
                 print("export session error")
             }
             
-            // save to device
-            let library = ALAssetsLibrary()
+            // hide
+            self.loadingView.stop()
             
-            if library.videoAtPathIs(compatibleWithSavedPhotosAlbum: composedMovieUrl) {
-                library.writeVideoAtPath(toSavedPhotosAlbum: composedMovieUrl, completionBlock: {(assetURL, assetError) -> Void in
-
+            // save to device
+            var assetCollection: PHAssetCollection?
+            let assets: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: PHAssetCollectionType.smartAlbum, subtype: PHAssetCollectionSubtype.any, options: nil)
+ 
+            assets.enumerateObjects({ (asset, index, stop) in
+                print(asset)
+                if asset.localizedTitle == "Videos" {
+                    assetCollection = asset
+                }
+            })
+            
+            if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(composedMoviePath) {
+            
+                PHPhotoLibrary.shared().performChanges({
+                    
+                    let createAssetRequest = PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: composedMovieUrl)
+                    let assetPlaceholder = createAssetRequest!.placeholderForCreatedAsset!
+                    
+                    let albumChangeRequset = PHAssetCollectionChangeRequest(for: assetCollection!)
+                    let enumeration: NSArray = [assetPlaceholder]
+                    albumChangeRequset?.addAssets(enumeration)
+                    
+                    
+                }, completionHandler: { (result, error) in
                     
                     DispatchQueue.main.async(execute: {
                         
@@ -172,14 +196,11 @@ class ViewController: UIViewController, UIAlertViewDelegate {
                         })
                         alert.addAction(okAction)
                         
-
                         self.present(alert, animated: true, completion: nil)
+                        print("\(error?.localizedDescription)")
                         
                     })
-                    
-                    
                 })
-                
 
             }
             
