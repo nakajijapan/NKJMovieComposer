@@ -55,7 +55,6 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     }
     
     // Timer
-
     // reflect the progress status to the view
     func updateExportDisplay(_ sender: AnyObject!) {
 
@@ -82,8 +81,6 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     }
     
     // Composite Video
-    
-
     func composingVideoToFileURLString(_ composedMoviePath: String) {
         let movieComposition = NKJMovieComposer()
         var layerInstruction: AVMutableVideoCompositionLayerInstruction
@@ -144,8 +141,6 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         self.assetExportSession = movieComposition.readyToComposeVideo(composedMoviePath)
         let composedMovieUrl = URL(fileURLWithPath: composedMoviePath)
 
-        
-        
         // export
         self.assetExportSession.exportAsynchronously(completionHandler: {() -> Void in
             if self.assetExportSession.status == AVAssetExportSessionStatus.completed {
@@ -180,7 +175,6 @@ class ViewController: UIViewController, UIAlertViewDelegate {
                     let enumeration: NSArray = [assetPlaceholder]
                     albumChangeRequset?.addAssets(enumeration)
                     
-                    
                 }, completionHandler: { (result, error) in
                     
                     DispatchQueue.main.async(execute: {
@@ -204,7 +198,6 @@ class ViewController: UIViewController, UIAlertViewDelegate {
 
             }
             
-
         })
         
         if self.assetExportSession.error != nil {
