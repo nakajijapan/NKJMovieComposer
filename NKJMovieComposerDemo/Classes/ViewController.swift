@@ -136,7 +136,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
             toEndOpacity: 0.0,
             timeRange: CMTimeRangeMake(startTime, timeDuration)
         )
-        
+
         // compose
         self.assetExportSession = movieComposition.readyToComposeVideo(composedMoviePath)
         let composedMovieUrl = URL(fileURLWithPath: composedMoviePath)
