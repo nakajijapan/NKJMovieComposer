@@ -8,39 +8,30 @@
 
 import UIKit
 import MediaPlayer
+import AVKit
 
 class ConfirmViewController: UIViewController {
     
     var appDelegate: AppDelegate!
-    var movielayer: MPMoviePlayerController!
-    
-    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+      
         view.backgroundColor = UIColor.white
         
         appDelegate = UIApplication.shared.delegate as! AppDelegate
         print("composedMoviePath = \(self.appDelegate.composedMoviePath)")
-        let movieUrl = URL(fileURLWithPath: self.appDelegate.composedMoviePath)
+        let movieURL = URL(fileURLWithPath: self.appDelegate.composedMoviePath)
 
-        movielayer = MPMoviePlayerController(contentURL: movieUrl)
-        movielayer.controlStyle = MPMovieControlStyle.embedded
-        movielayer.scalingMode = MPMovieScalingMode.aspectFill
-        movielayer.view.backgroundColor = UIColor.lightGray
+        let playerItem = AVPlayerItem(url: movieURL)
+        let player = AVPlayer(playerItem: playerItem)
+        let playerLayer = AVPlayerLayer(player: player)
+        playerLayer.backgroundColor = UIColor.lightGray.cgColor
         
         let size = UIScreen.main.bounds.size
-        movielayer.view.frame = CGRect(x: 0, y: 74, width: size.width, height: size.width)
-        movielayer.prepareToPlay()
-        
-        view.addSubview(movielayer.view)
+        playerLayer.frame = CGRect(x: 0, y: 74, width: size.width, height: size.width)
+        view.layer.addSublayer(playerLayer)
+        player.play()
         
     }
 

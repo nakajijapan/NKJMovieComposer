@@ -10,6 +10,7 @@ import UIKit
 import AVFoundation
 import CoreMedia
 import AssetsLibrary
+import Photos
 import NKJMovieComposer
 
 class ViewController: UIViewController, UIAlertViewDelegate {
@@ -54,7 +55,6 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     }
     
     // Timer
-
     // reflect the progress status to the view
     func updateExportDisplay(_ sender: AnyObject!) {
 
@@ -81,8 +81,6 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     }
     
     // Composite Video
-    
-
     func composingVideoToFileURLString(_ composedMoviePath: String) {
         let movieComposition = NKJMovieComposer()
         var layerInstruction: AVMutableVideoCompositionLayerInstruction
@@ -138,7 +136,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
             toEndOpacity: 0.0,
             timeRange: CMTimeRangeMake(startTime, timeDuration)
         )
-        
+
         // compose
         self.assetExportSession = movieComposition.readyToComposeVideo(composedMoviePath)
         let composedMovieUrl = URL(fileURLWithPath: composedMoviePath)
@@ -152,12 +150,32 @@ class ViewController: UIViewController, UIAlertViewDelegate {
                 print("export session error")
             }
             
-            // save to device
-            let library = ALAssetsLibrary()
+            // hide
+            self.loadingView.stop()
             
-            if library.videoAtPathIs(compatibleWithSavedPhotosAlbum: composedMovieUrl) {
-                library.writeVideoAtPath(toSavedPhotosAlbum: composedMovieUrl, completionBlock: {(assetURL, assetError) -> Void in
-
+            // save to device
+            var assetCollection: PHAssetCollection?
+            let assets: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: PHAssetCollectionType.smartAlbum, subtype: PHAssetCollectionSubtype.any, options: nil)
+ 
+            assets.enumerateObjects({ (asset, index, stop) in
+                print(asset)
+                if asset.localizedTitle == "Videos" {
+                    assetCollection = asset
+                }
+            })
+            
+            if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(composedMoviePath) {
+            
+                PHPhotoLibrary.shared().performChanges({
+                    
+                    let createAssetRequest = PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: composedMovieUrl)
+                    let assetPlaceholder = createAssetRequest!.placeholderForCreatedAsset!
+                    
+                    let albumChangeRequset = PHAssetCollectionChangeRequest(for: assetCollection!)
+                    let enumeration: NSArray = [assetPlaceholder]
+                    albumChangeRequset?.addAssets(enumeration)
+                    
+                }, completionHandler: { (result, error) in
                     
                     DispatchQueue.main.async(execute: {
                         
@@ -172,18 +190,14 @@ class ViewController: UIViewController, UIAlertViewDelegate {
                         })
                         alert.addAction(okAction)
                         
-
                         self.present(alert, animated: true, completion: nil)
+                        print("\(error?.localizedDescription)")
                         
                     })
-                    
-                    
                 })
-                
 
             }
             
-
         })
         
         if self.assetExportSession.error != nil {
