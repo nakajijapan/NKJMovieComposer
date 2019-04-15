@@ -23,6 +23,6 @@ test:
 		-destination-timeout 1 \
 		-sdk iphonesimulator \
 		-configuration Debug \
-		-destination 'platform=iOS Simulator,name=iPhone 6' \
+		-destination 'platform=iOS Simulator,name=iPhone X' \
 		clean test
 

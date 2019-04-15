@@ -21,7 +21,7 @@ class LoadingImageView: UIImageView {
             let width  = frame.size.width
             let height = frame.size.height
 
-            progressView = UIProgressView(progressViewStyle: UIProgressViewStyle.default)
+            progressView = UIProgressView(progressViewStyle: UIProgressView.Style.default)
             progressView.frame = CGRect(x: 20, y: height / 2, width: width - 20 * 2, height: 3)
             progressView.progressTintColor = UIColor.red
             progressView.progress = 0.0
@@ -35,31 +35,32 @@ class LoadingImageView: UIImageView {
     }
     
     func start() {
-
-        alpha = 0.0
-
-        UIView.animate(
-            withDuration: 0.2,
-            delay: 0.0,
-            options: UIViewAnimationOptions.curveEaseIn,
-            animations: { [weak self] in
-                self?.alpha = 0.8
-            },
-            completion: { [weak self] finish in
-                self?.alpha = 0.8
+        DispatchQueue.main.async { [weak self] in
+            self?.alpha = 0.0
+            UIView.animate(
+                withDuration: 0.2,
+                delay: 0.0,
+                options: UIView.AnimationOptions.curveEaseIn,
+                animations: { [weak self] in
+                    self?.alpha = 0.8
+                },
+                completion: { [weak self] _ in
+                    self?.alpha = 0.8
             })
+        }
     }
     
     func stop() {
-        
-        UIView.animate(
-            withDuration: 0.2,
-            animations: { [weak self] in
-                self?.alpha = 0
-            },
-            completion: { [weak self] finish in
-                self?.removeFromSuperview()
+        DispatchQueue.main.async { [weak self] in
+            UIView.animate(
+                withDuration: 0.2,
+                animations: { [weak self] in
+                    self?.alpha = 0
+                },
+                completion: { [weak self] _ in
+                    self?.removeFromSuperview()
             })
+        }
     }
     
 }

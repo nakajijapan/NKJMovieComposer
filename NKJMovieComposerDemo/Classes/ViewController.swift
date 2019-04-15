@@ -24,16 +24,16 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         
         view.backgroundColor = UIColor.white
         
-        let button:UIButton = UIButton(type: UIButtonType.system)
-        button.frame = CGRect(x: 10, y: 80, width: 200, height: 30)
+        let button = UIButton(type: UIButton.ButtonType.system)
+        button.frame = CGRect(x: 10, y: 120, width: 200, height: 30)
         button.backgroundColor = UIColor.yellow
-        button.setTitle("compose video", for: UIControlState())
-        button.addTarget(self, action: #selector(ViewController.pushSave(_:)), for: UIControlEvents.touchUpInside)
+        button.setTitle("compose video", for: UIControl.State())
+        button.addTarget(self, action: #selector(ViewController.pushSave(_:)), for: UIControl.Event.touchUpInside)
         view.addSubview(button)
 
     }
     
-    func pushSave(_ sender:AnyObject) {
+    @objc func pushSave(_ sender: AnyObject) {
         
         loadingView = LoadingImageView(frame: self.view.frame, useProgress: true)
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -56,7 +56,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     
     // Timer
     // reflect the progress status to the view
-    func updateExportDisplay(_ sender: AnyObject!) {
+    @objc func updateExportDisplay(_ sender: AnyObject!) {
 
         loadingView.progressView.progress = assetExportSession.progress
 
@@ -90,8 +90,8 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         layerInstruction = movieComposition.addVideo(movieURL1)
         
         // fade in
-        var startTime = kCMTimeZero
-        var timeDuration = CMTimeMake(3, 1)
+        var startTime = CMTime.zero
+        var timeDuration = CMTimeMake(value: 3, timescale: 1)
         layerInstruction.setOpacityRamp(
             fromStartOpacity: 0.0,
             toEndOpacity: 1.0,
@@ -128,13 +128,13 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         let _ = movieComposition.addVideo(movieURL3)
         
         // fade out
-        startTime = CMTimeSubtract(movieComposition.currentTimeDuration, CMTimeMake(3, 1))
-        timeDuration = CMTimeMake(3, 1)
+        startTime = CMTimeSubtract(movieComposition.currentTimeDuration, CMTimeMake(value: 3, timescale: 1))
+        timeDuration = CMTimeMake(value: 3, timescale: 1)
         
         layerInstruction.setOpacityRamp(
             fromStartOpacity: 1.0,
             toEndOpacity: 0.0,
-            timeRange: CMTimeRangeMake(startTime, timeDuration)
+            timeRange: CMTimeRangeMake(start: startTime, duration: timeDuration)
         )
 
         // compose
@@ -143,7 +143,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
 
         // export
         self.assetExportSession.exportAsynchronously(completionHandler: {() -> Void in
-            if self.assetExportSession.status == AVAssetExportSessionStatus.completed {
+            if self.assetExportSession.status == AVAssetExportSession.Status.completed {
                 print("export session completed")
             }
             else {
@@ -183,15 +183,16 @@ class ViewController: UIViewController, UIAlertViewDelegate {
                         self.loadingView.stop()
                         
                         // show success message
-                        let alert = UIAlertController(title: "Completion", message: "saved in Photo Album", preferredStyle: UIAlertControllerStyle.alert)
-                        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(alertAction) -> Void in
+                        let alert = UIAlertController(title: "Completion", message: "saved in Photo Album", preferredStyle: UIAlertController.Style.alert)
+                        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(alertAction) -> Void in
                             let vc = ConfirmViewController(nibName: nil, bundle: nil)
                             self.navigationController?.pushViewController(vc, animated: true)
                         })
                         alert.addAction(okAction)
                         
                         self.present(alert, animated: true, completion: nil)
-                        print("\(error?.localizedDescription)")
+                        let errorMessage = error?.localizedDescription ?? ""
+                        print("errorMessage: \(errorMessage)")
                         
                     })
                 })
@@ -201,7 +202,8 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         })
         
         if self.assetExportSession.error != nil {
-            print("assetExportSession: \(self.assetExportSession.error)")
+            let assetExportSessionErrorMessage = self.assetExportSession.error.debugDescription 
+            print("assetExportSessionErrorMessage: \(assetExportSessionErrorMessage)")
         }
         
     }
