@@ -19,8 +19,8 @@ class ConfirmViewController: UIViewController {
       
         view.backgroundColor = UIColor.white
         
-        appDelegate = UIApplication.shared.delegate as! AppDelegate
-        print("composedMoviePath = \(self.appDelegate.composedMoviePath)")
+        appDelegate = (UIApplication.shared.delegate as! AppDelegate)
+        print("composedMoviePath = \(self.appDelegate.composedMoviePath ?? "")")
         let movieURL = URL(fileURLWithPath: self.appDelegate.composedMoviePath)
 
         let playerItem = AVPlayerItem(url: movieURL)
