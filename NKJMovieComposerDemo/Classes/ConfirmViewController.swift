@@ -21,7 +21,7 @@ class ConfirmViewController: UIViewController {
         
         appDelegate = (UIApplication.shared.delegate as! AppDelegate)
         print("composedMoviePath = \(self.appDelegate.composedMoviePath ?? "")")
-        let movieURL = URL(fileURLWithPath: self.appDelegate.composedMoviePath)
+        let movieURL = URL(fileURLWithPath: appDelegate.composedMoviePath)
 
         let playerItem = AVPlayerItem(url: movieURL)
         let player = AVPlayer(playerItem: playerItem)

@@ -44,7 +44,7 @@ class LoadingImageView: UIImageView {
                 animations: { [weak self] in
                     self?.alpha = 0.8
                 },
-                completion: { [weak self] finish in
+                completion: { [weak self] _ in
                     self?.alpha = 0.8
             })
         }
@@ -57,7 +57,7 @@ class LoadingImageView: UIImageView {
                 animations: { [weak self] in
                     self?.alpha = 0
                 },
-                completion: { [weak self] finish in
+                completion: { [weak self] _ in
                     self?.removeFromSuperview()
             })
         }

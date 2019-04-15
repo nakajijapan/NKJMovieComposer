@@ -24,7 +24,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         
         view.backgroundColor = UIColor.white
         
-        let button:UIButton = UIButton(type: UIButton.ButtonType.system)
+        let button = UIButton(type: UIButton.ButtonType.system)
         button.frame = CGRect(x: 10, y: 120, width: 200, height: 30)
         button.backgroundColor = UIColor.yellow
         button.setTitle("compose video", for: UIControl.State())
@@ -33,7 +33,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
 
     }
     
-    @objc func pushSave(_ sender:AnyObject) {
+    @objc func pushSave(_ sender: AnyObject) {
         
         loadingView = LoadingImageView(frame: self.view.frame, useProgress: true)
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
