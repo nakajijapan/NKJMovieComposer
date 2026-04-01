@@ -7,32 +7,29 @@
 //
 
 import UIKit
-import MediaPlayer
 import AVKit
 
 class ConfirmViewController: UIViewController {
-    
-    var appDelegate: AppDelegate!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-      
-        view.backgroundColor = UIColor.white
-        
-        appDelegate = (UIApplication.shared.delegate as! AppDelegate)
-        print("composedMoviePath = \(self.appDelegate.composedMoviePath ?? "")")
-        let movieURL = URL(fileURLWithPath: appDelegate.composedMoviePath)
+        view.backgroundColor = .white
 
-        let playerItem = AVPlayerItem(url: movieURL)
-        let player = AVPlayer(playerItem: playerItem)
-        let playerLayer = AVPlayerLayer(player: player)
-        playerLayer.backgroundColor = UIColor.lightGray.cgColor
-        
-        let size = UIScreen.main.bounds.size
-        playerLayer.frame = CGRect(x: 0, y: 74, width: size.width, height: size.width)
-        view.layer.addSublayer(playerLayer)
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+              let composedMoviePath = appDelegate.composedMoviePath else {
+            return
+        }
+
+        let movieURL = URL(fileURLWithPath: composedMoviePath)
+        let player = AVPlayer(url: movieURL)
+        let playerViewController = AVPlayerViewController()
+        playerViewController.player = player
+
+        addChild(playerViewController)
+        playerViewController.view.frame = view.bounds
+        view.addSubview(playerViewController.view)
+        playerViewController.didMove(toParent: self)
+
         player.play()
-        
     }
-
 }

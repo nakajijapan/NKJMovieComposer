@@ -12,17 +12,23 @@ build:
 	xcodebuild \
 		-workspace $(WORKSPACE) \
 		-scheme $(PROJECT)-iOS \
+		-destination 'platform=iOS Simulator,name=iPhone 16' \
 		-configuration Debug \
-		TEST_AFTER_BUILD=YES \
-		TEST_HOST=
+		build
 
 test:
 	xcodebuild \
 		-workspace $(WORKSPACE) \
 		-scheme $(PROJECT)-iOS \
-		-destination-timeout 1 \
-		-sdk iphonesimulator \
+		-destination 'platform=iOS Simulator,name=iPhone 16' \
 		-configuration Debug \
-		-destination 'platform=iOS Simulator,name=iPhone X' \
 		clean test
 
+spm-build:
+	swift build
+
+spm-test:
+	swift test
+
+lint:
+	pod lib lint --allow-warnings
